@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feuerwehrjugend – FF Viehdorf</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <!-- ===== INPAGE CSS (Youth-Optimized FF Style) ===== -->
+    <style>
+
+    /* Integrate FF Design Language */
+    :root {
+        --fd-bg: #191a1d;
+        --fd-panel: #202226;
+        --fd-line: rgba(213,224,0,0.85);  /* neon yellow */
+        --fd-red: #bd0000cc;              /* FF red, slightly softened */
+        --fd-radius: 14px;
+        --fd-text: #e0e0e0;
+        --fd-sub: #bcbcbc;
+        --fd-shadow: 0 12px 32px rgba(0,0,0,0.55);
+    }
+
+    .fd-section { padding: 4rem 0; }
+
+    /* Universal headings */
+    .fd-heading {
+        font-family: 'Uncage';
+        color: #fff;
+        text-align: center;
+        font-size: 2.6rem;
+        margin-bottom: .3rem;
+    }
+    .fd-underline {
+        width: 120px;
+        height: 5px;
+        border-radius: 20px;
+        margin: 0 auto 2.8rem auto;
+        background: linear-gradient(90deg, var(--fd-line), var(--fd-red));
+    }
+
+    /* ========== WHY JOIN (Youth-Playful Tiles) ========== */
+    .fd-youth-why {
+        background: linear-gradient(180deg, #1c1d1f, #141516 120%);
+    }
+
+    .fd-youth-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(213,224,0,0.22), rgba(213,224,0,0.08));
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        font-size: 2rem;
+        margin: 0 auto 1rem;
+        box-shadow: 0 12px 22px rgba(0,0,0,0.35);
+        color: var(--fd-line);
+        transition: .25s ease;
+    }
+    .fd-youth-icon:hover { transform: translateY(-4px); }
+
+    .fd-youth-why p {
+        max-width: 280px;
+        margin: 0 auto;
+        color: var(--fd-sub);
+    }
+
+    /* ========== ACTIVITIES (Images + Panels) ========== */
+    .fd-activities {
+        background: linear-gradient(180deg, #202124, #18191b 120%);
+    }
+
+    .fd-act-panel {
+        background: var(--fd-panel);
+        border-radius: var(--fd-radius);
+        padding: 2rem;
+        color: var(--fd-text);
+        border: 1px solid rgba(255,255,255,0.05);
+        box-shadow: var(--fd-shadow);
+    }
+
+    .fd-act-heading {
+        font-family: 'Uncage';
+        font-size: 1.8rem;
+        color: var(--fd-line);
+    }
+
+    .fd-act-icon {
+        color: var(--fd-line);
+        font-size: 1.4rem;
+    }
+
+    /* ========== QUOTES SECTION (Playful Cards) ========== */
+    .fd-quotes {
+        background: linear-gradient(90deg, rgba(213,224,0,0.08), rgba(189,0,0,0.10));
+    }
+
+    .fd-quote-card {
+        background: #fff;
+        border-radius: var(--fd-radius);
+        padding: 1.8rem;
+        box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+        border-left: 5px solid var(--fd-red);
+    }
+
+    .fd-quote-icon {
+        font-size: 2.5rem;
+        color: var(--fd-red);
+    }
+
+    /* CTA */
+    .fd-cta {
+        background: linear-gradient(180deg, var(--fd-red), rgba(189,0,0,0.5));
+        padding: 3rem 1rem;
+        text-align:center;
+        border-radius: 0;
+    }
+
+    .fd-cta h2 {
+        font-family: 'Uncage';
+        font-size: 2.4rem;
+        color: #fff;
+    }
+    .fd-cta .btn {
+        background: #fff;
+        color: #000;
+        padding: .8rem 1.6rem;
+        border-radius: var(--fd-radius);
+        font-weight:700;
+        transition:.25s ease;
+    }
+    .fd-cta .btn:hover {
+        transform: translateY(-3px);
+    }
+
+    /* FIX: sorgt dafür, dass sticky Navbar auch im mobile Modus bleibt */
+
+/* --- Force visible sticky navbar (override any transform/hide rules) --- */
+/* Nur sticky — keine Overrides mehr */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1060;
+}
+
+/* Diese Regel komplett entfernen */
+.navbar[style] { }
+
+
+
+
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION (unchanged) -->
+<!-- NAV (unverändert) -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-large">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="../img/logo.png" alt="FF-Viehdorf Logo" class="logo-img me-2">
+            <span class="brand-text">FF-Viehdorf</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Start</a></li>
+                <li class="nav-item"><a class="nav-link" href="uns.html">Über uns</a></li>
+                <li class="nav-item"><a class="nav-link" href="ausruestung.html">Ausrüstung</a></li>
+                <li class="nav-item"><a class="nav-link active" href="fj.html">Feuerwehrjugend</a></li>
+                <li class="nav-item"><a class="nav-link" href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO (unchanged) -->
+<header class="hero-modern position-relative text-white">
+    <div class="hero-bg" style="background-image: url('../img/fj.jpg');"></div>
+    <div class="hero-gradient-overlay"></div>
+    <div class="container hero-content d-flex flex-column justify-content-center align-items-start text-start">
+        <h1 class="display-3 fw-bold animate-fadein-up">Unsere Feuerwehrjugend</h1>
+        <p class="lead mt-3 animate-fadein-up delay-1">Engagiert, kameradschaftlich, <span class="highlight">bereit für die Zukunft</span></p>
+        <a href="#start" class="btn btn-secondary btn-lg mt-4 animate-fadein-up delay-2">
+            Jetzt mehr erfahren <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+    </div>
+</header>
+
+<!-- ===================================================== -->
+<!-- WHY JOIN (PLAYFUL INTRO SECTION) -->
+<!-- ===================================================== -->
+<section id="start" class="fd-section fd-youth-why text-center">
+    <div class="container">
+
+        <h2 class="fd-heading">Warum Feuerwehrjugend?</h2>
+        <div class="fd-underline"></div>
+
+        <div class="row g-4 mt-4">
+
+            <div class="col-md-4">
+                <div class="fd-youth-icon"><i class="bi bi-people-fill"></i></div>
+                <h5 class="text-white">Kameradschaft</h5>
+                <p>Freunde finden, gemeinsam wachsen, ein Team sein.</p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="fd-youth-icon"><i class="bi bi-tools"></i></div>
+                <h5 class="text-white">Technik erleben</h5>
+                <p>Feuerwehrgeräte, Funk & Action – sicher angeleitet.</p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="fd-youth-icon"><i class="bi bi-award-fill"></i></div>
+                <h5 class="text-white">Bewerbe & Abzeichen</h5>
+                <p>Zeig, was du kannst – wachse über dich hinaus.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- ACTIVITIES (Panels + Images) -->
+<!-- ===================================================== -->
+<section id="aktivitaeten" class="fd-section fd-activities">
+    <div class="container">
+
+        <h2 class="fd-heading">Unsere Aktivitäten</h2>
+        <div class="fd-underline"></div>
+
+        <!-- Lager -->
+        <div class="row g-5 align-items-center mb-5">
+            <div class="col-md-6">
+                <div class="rounded overflow-hidden shadow-lg">
+                    <img src="../img/lager.jpg" class="img-fluid" alt="Jugendlager">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fd-act-panel">
+                    <h3 class="fd-act-heading mb-3">Zeltlager & Action</h3>
+                    <p>Im Sommer geht’s gemeinsam ins Jugendlager – Abenteuer, Teamwork, Workshops und richtig viel Spaß! Lagerfeuer, Spiele, Outdoor-Erlebnisse und echte Highlights warten auf dich.</p>
+                    <p class="mb-0"><i class="fd-act-icon bi bi-fire me-2"></i>Neue Freundschaften garantiert!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Übungen -->
+        <div class="row g-5 align-items-center flex-md-row-reverse">
+            <div class="col-md-6">
+                <div class="rounded overflow-hidden shadow-lg">
+                    <img src="../img/übung.jpg" class="img-fluid" alt="Übung">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fd-act-panel">
+                    <h3 class="fd-act-heading mb-3">Übungen & Ausbildung</h3>
+                    <p>Von Schlauch ausrollen bis Funktraining – du lernst bei uns altersgerecht, sicher und spielerisch, wie Feuerwehr funktioniert. Begleitet von motivierten Betreuer:innen.</p>
+                    <p class="mb-0"><i class="fd-act-icon bi bi-lightning-charge-fill me-2"></i>Für alle, die Action lieben!</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- YOUTH QUOTES -->
+<!-- ===================================================== -->
+<section class="fd-section fd-quotes text-dark">
+    <div class="container">
+
+        <h2 class="fd-heading text-white">Was unsere Jugend sagt</h2>
+        <div class="fd-underline"></div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="fd-quote-card h-100">
+                    <div class="fd-quote-icon mb-2"><i class="bi bi-chat-left-quote-fill"></i></div>
+                    <p class="fst-italic mb-2">„Ich hab gelernt, was Teamwork wirklich heißt.“</p>
+                    <small class="text-muted">– Lisa, 14</small>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="fd-quote-card h-100">
+                    <div class="fd-quote-icon mb-2"><i class="bi bi-fire"></i></div>
+                    <p class="fst-italic mb-2">„Die Übungen mit echtem Gerät sind mega!“</p>
+                    <small class="text-muted">– Max, 13</small>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="fd-quote-card h-100">
+                    <div class="fd-quote-icon mb-2"><i class="bi bi-backpack-fill"></i></div>
+                    <p class="fst-italic mb-2">„Ich freue mich jedes Jahr aufs Lager!“</p>
+                    <small class="text-muted">– Sophie, 12</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- CTA JOIN -->
+<!-- ===================================================== -->
+<section class="fd-cta">
+    <div class="container">
+        <h2 class="mb-3">Lust bekommen?</h2>
+        <p class="lead mb-4 text-white">Dann komm vorbei oder melde dich bei uns – wir freuen uns auf dich!</p>
+        <a href="kontakt.html" class="btn">
+            Jetzt Kontakt aufnehmen <i class="bi bi-envelope ms-1"></i>
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER (unchanged) -->
+<footer class="footer text-white pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Kontakt</h5>
+                <p>Adresse: Musterstraße 123<br>12345 Musterstadt</p>
+                <p>Telefon: +43 123 456789</p>
+                <p>E-Mail: info@firma.at</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Informationen</h5>
+                <ul class="list-unstyled">
+                    <li><a href="../index.html" class="footer-link">Startseite</a></li>
+                    <li><a href="uns.html" class="footer-link">Über uns</a></li>
+                    <li><a href="ausruestung.html" class="footer-link">Ausrüstung</a></li>
+                    <li><a href="karriere.html" class="footer-link">Karriere</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Folgen Sie uns</h5>
+                <a href="#" class="footer-social me-3"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="footer-social me-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <hr class="bg-light">
+        <div class="text-center">
+            <small>&copy; 2025 Firmenname. Alle Rechte vorbehalten.</small>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Keep existing navbar shrink behavior (unchanged)
+    window.addEventListener('scroll', function () {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('navbar-shrink');
+            navbar.classList.remove('navbar-large');
+        } else {
+            navbar.classList.remove('navbar-shrink');
+            navbar.classList.add('navbar-large');
+        }
+    });
+</script>
+
+</body>
+</html>

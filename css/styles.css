@@ -1,0 +1,789 @@
+/* ------------------------------
+   Original / bestehendes CSS
+   (Ich habe keinerlei vorhandene Klassen verändert)
+   ------------------------------ */
+
+@font-face {
+    font-family: 'Uncage';
+    src: url('../fonts/UNCAGE-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Uncage';
+    src: url('../fonts/UNCAGE-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Uncage';
+    src: url('../fonts/UNCAGE-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+:root {
+    --primary-color: #2e2e2e;
+    --secondary-color: #bd0000;
+    --accent-color: #d5e000;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+h1{
+    font-family: 'Uncage';
+    font-style: normal;
+    font-weight: normal;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+    padding: 1.8rem 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.navbar-large {
+    padding-top: 2.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.navbar-shrink {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    padding: 0.3rem 1rem;
+}
+
+.navbar-brand .logo-img {
+    height: 60px;
+    transition: height 0.3s ease;
+}
+
+.navbar-shrink .logo-img {
+    height: 36px;
+}
+
+.navbar-brand .brand-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    transition: font-size 0.3s ease;
+}
+
+.navbar-shrink .brand-text {
+    font-size: 1.3rem;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+    color: white;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: 600;
+    color:var(--accent-color);
+    border-bottom: 2px solid var(--bs-secondary); /* oder eine passende Akzentfarbe */
+}
+
+.navbar-shrink .nav-link {
+    font-size: 1rem;
+}
+
+.gallery-hover {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.parallax-section {
+    background-image: url('../img/fj.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    position: relative;
+    padding: 4rem 0;
+}
+
+.parallax-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(46, 46, 46, 0.6); /* Abdunklung */
+    z-index: 0;
+}
+
+.parallax-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.text-accent {
+    color: #e63946; /* oder euer Akzentfarbton */
+}
+
+.bg-primarily{
+    background-color: var(--primary-color);
+}
+.navbar-brand,
+.nav-link {
+    color: white;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.hero {
+    min-height: 80vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.darken{
+    filter:brightness(70%);
+}
+
+.hero-overlay {
+    z-index: 1;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.bg-accented{
+    background-color: var(--secondary-color);
+}
+
+.bg-accent{
+    background-color: var(--accent-color);
+}
+
+.section-title {
+    color: var(--secondary-color);
+}
+
+.bg-secondary-dark {
+    background-color: #1e1e1e;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+
+.detail-slide {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    color: #000;
+    overflow-y: auto;
+    z-index: 2000;
+    transition: bottom 0.6s ease;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+}
+.detail-slide.active {
+    bottom: 0;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color:var(--secondary-color);
+    transition: 0.3s;
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+
+.service-image {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.footer {
+    background-color: #2e2e2e;
+}
+
+.footer-link {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #e0d900; /* Akzentfarbe sparsam */
+    text-decoration: underline;
+}
+
+.footer-social {
+    font-size: 1.5rem;
+    color: #bd0000; /* Sekundärfarbe */
+    transition: color 0.3s;
+}
+
+.footer-social:hover {
+    color: #e0d900; /* Akzentfarbe als Highlight */
+}
+
+/* Neuer Hero Style */
+.hero-modern {
+    position: relative;
+    height: 85vh;
+    min-height: 500px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+}
+
+.hero-modern .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.1);
+    transition: transform 3s ease;
+    z-index: 1;
+    will-change: transform;
+}
+
+.hero-modern:hover .hero-bg {
+    transform: scale(1.15);
+}
+
+.hero-modern .hero-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.65) 0%, rgba(46, 46, 46, 0.85) 100%);
+    z-index: 2;
+}
+
+.hero-modern .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 700px;
+    padding-left: 2rem;
+    animation: fadein 1s ease forwards;
+}
+
+/* Animations */
+@keyframes fadein-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadein-up {
+    opacity: 0;
+    animation: fadein-up 1s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.4s;
+}
+
+.delay-2 {
+    animation-delay: 0.8s;
+}
+
+.detail-slide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    color: #000;
+    z-index: 1050;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+}
+
+.detail-slide.active {
+    transform: translateY(0);
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.text-secondary {
+    color: var(--secondary-color) !important;
+}
+
+.text-accent2 {
+    color: var(--accent-color) !important;
+}
+
+.collage-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 4px;
+    height: 100%;
+    width: 100%;
+}
+
+.collage-grid .item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Bildpositionen exakt laut deiner Skizze */
+.item-1 { grid-column: 1 / 2; grid-row: 1 / 2; }
+.item-2 { grid-column: 2 / 4; grid-row: 1 / 2; }
+.item-3 { grid-column: 4 / 5; grid-row: 1 / 2; }
+.item-4 { grid-column: 5 / 6; grid-row: 1 / 2; }
+.item-5 { grid-column: 1 / 4; grid-row: 2 / 3; }
+.item-6 { grid-column: 4 / 6; grid-row: 2 / 3; }
+.item-7 { grid-column: 1 / 2; grid-row: 3 / 4; }
+.item-8 { grid-column: 2 / 4; grid-row: 3 / 4; }
+.item-9 { grid-column: 4 / 6; grid-row: 3 / 4; }
+
+.detail-slide-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.border-accent {
+    border-color: var(--secondary-color) !important;
+}
+
+.btn-outline-accent {
+    color:white !important;
+    border-color: var(--secondary-color) !important;
+}
+.btn-outline-accent:hover {
+    background-color: var(--secondary-color) !important;
+    color: white;!important;
+}
+
+.team-card img {
+    transition: transform 0.4s ease;
+}
+
+.btn-accent {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+}
+.btn-accent:hover {
+    background-color: white;
+    color: var(--secondary-color);
+}
+
+.close-detail {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+}
+.detail-area .transition {
+    transition: all 0.5s ease;
+}
+
+.detail-area.show {
+    animation: fadeSlideIn 0.5s ease forwards;
+}
+
+.parallax-section2 {
+    background-image: url('../img/alle.jpg'); /* Hier kannst du ein eigenes Bild definieren */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    position: relative;
+    z-index: 0;
+}
+
+.parallax-section2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* leichte Abdunklung */
+    z-index: -1;
+}
+
+/* ------------------------------
+   Neue, konfliktfreie Ergänzungen
+   (keine vorhandenen Klassen werden verändert)
+   ------------------------------ */
+
+/* Einheitlicher Section-Block für vertikalen Rhythmus */
+.section-block {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+}
+
+/* Dezente Sektionstitel (neu) */
+.new-section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.8rem;
+    color: white;
+    position: relative;
+    letter-spacing: 0.2px;
+    font-family: 'Uncage';
+}
+
+.new-section-title::after {
+    content: "";
+    width: 72px;
+    height: 3px;
+    /*background: linear-gradient(90deg, rgba(213,224,0,0.95), rgba(189,0,0,0.85));*/
+    display: block;
+    margin: 0.6rem auto 0 auto;
+    border-radius: 2px;
+    opacity: 0.95;
+}
+
+/* Values Section (luftig, eigenständig) */
+.new-values-wrapper {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+    padding: 4.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+.new-value-card {
+    background: #1d1d1d;
+    padding: 1.8rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.03);
+    text-align: center;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.new-value-card:hover {
+    transform: translateY(-6px);
+    background: #232323;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+
+.new-value-icon {
+    font-size: 2.4rem;
+    color: #f0f0f0;
+    margin-bottom: 0.6rem;
+}
+
+/* History Section (eigenständig, kontrastreich) */
+.new-history-wrapper {
+    background: #111;
+    padding: 5.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.new-history-img {
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.04);
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+.new-timeline {
+    border-left: 4px solid rgba(213,224,0,0.85);
+    padding-left: 1.6rem;
+}
+
+.new-timeline-item {
+    margin-bottom: 1.6rem;
+}
+
+.new-timeline-year {
+    font-family: 'Uncage';
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.new-timeline-text {
+    color: #cfcfcf;
+    line-height: 1.45;
+}
+
+/* Stats Section */
+.stats-section {
+    background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0.01));
+    padding: 4.5rem 0;
+}
+
+.stats-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+    padding: 1.8rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    min-height: 260px;
+}
+
+/* Stat summary items under chart */
+.stat-summary .stat-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+}
+.stat-summary .stat-label {
+    color: #bfbfbf;
+}
+
+/* responsiveness tweaks */
+@media (max-width: 991.98px) {
+    .hero-modern .hero-content { padding-left: 1rem; text-align: center; align-items: center; }
+    .hero-modern .hero-content h1 { font-size: 2.2rem; }
+    .new-section-title { font-size: 1.9rem; }
+    .new-history-wrapper { padding: 3.5rem 0; }
+}
+
+@media (max-width: 575.98px) {
+    .navbar-brand .brand-text { font-size: 1.25rem; }
+    .logo-img { height: 44px; }
+    .new-value-card { padding: 1.4rem; }
+    .new-section-title { font-size: 1.6rem; }
+    .stats-card { min-height: 220px; }
+}
+
+/* small visual polish */
+.section-block + .section-block { margin-top: 0; }
+
+/* ========================================= */
+/* NEW: Team Intro Section (modern, clean)   */
+/* ========================================= */
+
+.team-intro-section {
+    padding: 5rem 0;
+    background: #191919;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Image Wrapper */
+.team-intro-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+}
+
+.team-intro-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+}
+
+.team-intro-image-wrapper:hover .team-intro-image {
+    transform: scale(1.04);
+}
+
+/* Text Overlay Label */
+.team-intro-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(189,0,0,0.85); /* Sekundärfarbe */
+    padding: 0.6rem 1.1rem;
+    font-weight: 600;
+    border-top-right-radius: 8px;
+    font-size: 1.05rem;
+}
+
+/* Text Content */
+.team-intro-content {
+    padding-left: 0.5rem;
+}
+
+.team-intro-title {
+    font-family: 'Uncage';
+    font-size: 2.3rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    letter-spacing: 0.5px;
+}
+
+.team-intro-lead {
+    font-size: 1.15rem;
+    color: #eaeaea;
+    margin-bottom: 1rem;
+}
+
+.team-intro-text {
+    color: #bbbbbb;
+    line-height: 1.55;
+}
+
+/* Stats */
+.team-intro-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.team-intro-stat {
+    background: rgba(255,255,255,0.03);
+    padding: 0.75rem 1.1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: white;
+    font-size: 0.95rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.team-intro-stat i {
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+}
+
+.team-intro-stat:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-3px);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 991px) {
+    .team-intro-section { padding: 3.5rem 0; }
+
+    .team-intro-title {
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .team-intro-lead,
+    .team-intro-text {
+        text-align: center;
+    }
+
+    .team-intro-stats {
+        justify-content: center;
+    }
+
+    .team-intro-label {
+        font-size: 0.95rem;
+    }
+}
+
+/* ======================================== */
+/* Modern Redesign – Leitungsteam Section   */
+/* ======================================== */
+
+.lead-team-section {
+    padding: 5rem 0;
+    background: #111;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.lead-team-card {
+    text-align: center;
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: transform 0.3s ease, box-shadow 0.35s ease, background 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+.lead-team-card:hover {
+    transform: translateY(-8px);
+    background: #202020;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.55);
+}
+
+/* Portrait Wrapper */
+.lead-team-img-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1rem auto;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid rgba(213,224,0,0.7); /* dezentes accent glow */
+    box-shadow: 0 0 12px rgba(213,224,0,0.15);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.lead-team-card:hover .lead-team-img-wrapper {
+    transform: scale(1.07);
+    box-shadow: 0 0 18px rgba(213,224,0,0.35);
+}
+
+/* Portrait */
+.lead-team-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Name */
+.lead-team-name {
+    font-family: 'Uncage';
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    color: var(--accent-color);
+}
+
+/* Role */
+.lead-team-role {
+    color: #cccccc;
+    font-size: 0.95rem;
+    letter-spacing: 0.4px;
+    margin-bottom: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 767px) {
+    .lead-team-img-wrapper {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+

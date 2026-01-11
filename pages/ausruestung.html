@@ -1,0 +1,622 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ausrüstung — FF Viehdorf</title>
+
+    <!-- external libs -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <!-- ========================================= -->
+    <!--   IN-PAGE CSS  — gleiche Designsprache    -->
+    <!-- ========================================= -->
+    <style>
+
+    /* ========================================= */
+    /*   GLOBAL DESIGN TOKENS — MATCHES INDEX    */
+    /* ========================================= */
+    :root {
+        --fd-bg: #1b1c20;              /* base background (same as Startseite) */
+        --fd-panel: #24262b;           /* main panel background */
+        --fd-panel-light: #2d2f34;     /* lighter panel */
+        --fd-border: rgba(255,255,255,0.10);
+        --fd-red: #b70000;
+        --fd-yellow: #d5e000;
+        --fd-radius: 12px;
+        --fd-title: 'Uncage';
+    }
+
+    body {
+        background: var(--fd-bg);
+        color: #eaeaea;
+    }
+
+    .fd-section { padding: 4.5rem 0; }
+
+    /* ========================================= */
+    /*          SECTION BACKGROUND BANDS         */
+    /* ========================================= */
+    .fd-band {
+        background: var(--fd-bg);
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+    }
+
+    .fd-band::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background: transparent;
+    z-index:-1;
+}
+
+
+    /* ========================================= */
+    /*                HEADINGS                   */
+    /* ========================================= */
+    .fd-heading {
+        font-family: var(--fd-title);
+        color: #fff;
+        font-size: 2.4rem;
+        font-weight: 700;
+    }
+
+    .fd-underline {
+        width: 84px;
+        height: 5px;
+        margin: .6rem 0 1.6rem 0;
+        background: linear-gradient(90deg, var(--fd-yellow), var(--fd-red));
+        border-radius: 6px;
+    }
+
+    /* ========================================= */
+    /*              VEHICLE CARDS                */
+    /* ========================================= */
+    .fd-card {
+        background: var(--fd-panel);
+        border: 1px solid var(--fd-border);
+        border-radius: var(--fd-radius);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+        overflow: hidden;
+        transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .fd-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+    }
+
+    .fd-card-title {
+        font-family: var(--fd-title);
+        font-size: 1.4rem;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+    }
+    .fd-card-title i {
+        color: var(--fd-red);
+        font-size: 1.35rem;
+    }
+
+    .fd-card p {
+        color: #cfcfcf;
+    }
+
+    .btn-fd {
+        background: var(--fd-red);
+        border: none;
+        color: white;
+        border-radius: 10px;
+        padding: .65rem 1.1rem;
+        font-weight: 600;
+        transition: .25s ease;
+    }
+    .btn-fd:hover {
+        background: #7a0000;
+        color: #fff;
+    }
+
+    /* ========================================= */
+    /*             VEHICLE DETAIL PANELS          */
+    /* ========================================= */
+    .fd-detail {
+        background: #fff;
+        color: #000;
+        padding: 1.8rem;
+        border-radius: var(--fd-radius);
+        box-shadow: 0 14px 36px rgba(0,0,0,0.35);
+        border-left: 6px solid var(--fd-red);
+    }
+
+    .fd-detail h4 {
+        font-family: var(--fd-title);
+        font-weight: 700;
+        color: var(--fd-red);
+    }
+
+    /* ========================================= */
+    /*            EQUIPMENT ITEM BLOCKS           */
+    /* ========================================= */
+
+    .fd-equip-row {
+        border-radius: var(--fd-radius);
+        overflow: hidden;
+        border: 1px solid var(--fd-border);
+        background: var(--fd-panel-light);
+    }
+
+    /* Unified tile design */
+    .fd-equip-tile {
+        background: linear-gradient(
+            180deg,
+            rgba(255,255,255,0.012),
+            rgba(0,0,0,0.03)
+        );
+        border-radius: var(--fd-radius);
+        border: 1px solid var(--fd-border);
+        padding: 1.6rem 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.2rem;
+        box-shadow: 0 12px 26px rgba(0,0,0,0.35);
+        transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .fd-equip-tile:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+    }
+
+    .fd-equip-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        background: linear-gradient(
+            180deg,
+            rgba(183,0,0,0.18),
+            rgba(183,0,0,0.08)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        box-shadow: 0 10px 18px rgba(183,0,0,0.15);
+        color: var(--fd-yellow);
+        flex-shrink: 0;
+    }
+
+    .fd-equip-textwrap { flex: 1; }
+
+    .fd-equip-title {
+        font-family: var(--fd-title);
+        color: var(--fd-yellow);
+        margin-bottom: .2rem;
+    }
+
+    .fd-equip-text {
+        color: #d0d0d0;
+        font-size: .98rem;
+        line-height: 1.55;
+    }
+
+    .fd-left { flex-direction: row; }
+    .fd-right { flex-direction: row; }
+
+    @media (max-width: 768px) {
+        .fd-right {
+            flex-direction: row;
+        }
+        .fd-right .text-end {
+            text-align: left !important;
+        }
+    }
+
+    /* ========================================= */
+    /*              FEUERWEHRHAUS BLOCK          */
+    /* ========================================= */
+
+    .fd-house-text h3 {
+        font-family: var(--fd-title);
+        color: var(--fd-red);
+        margin-bottom: .9rem;
+    }
+
+    .fd-house-text p {
+        color: #dcdcdc;
+    }
+
+    .fd-house-list i {
+        color: var(--fd-yellow);
+        font-size: 1.8rem;
+    }
+
+    .fd-house-img {
+        border-radius: var(--fd-radius);
+        overflow: hidden;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.55);
+    }
+
+    .fd-house-mini img {
+        border-radius: var(--fd-radius);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+    }
+
+    /* ========================================= */
+    /*                    CTA                     */
+    /* ========================================= */
+
+    .fd-cta-panel {
+        background: linear-gradient(
+            90deg,
+            rgba(183,0,0,0.12),
+            rgba(213,224,0,0.05)
+        );
+        padding: 2rem;
+        border-radius: var(--fd-radius);
+        border: 1px solid var(--fd-border);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+    }
+
+</style>
+
+</head>
+
+
+<body>
+
+<!-- NAV (unverändert) -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-large">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="../img/logo.png" alt="FF-Viehdorf Logo" class="logo-img me-2">
+            <span class="brand-text">FF-Viehdorf</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Start</a></li>
+                <li class="nav-item"><a class="nav-link" href="uns.html">Über uns</a></li>
+                <li class="nav-item"><a class="nav-link active" href="ausruestung.html">Ausrüstung</a></li>
+                <li class="nav-item"><a class="nav-link" href="fj.html">Feuerwehrjugend</a></li>
+                <li class="nav-item"><a class="nav-link" href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- ================== HERO (unchanged) ================== -->
+<header class="hero-modern position-relative text-white">
+    <div class="hero-bg" style="background-image: url('../img/werk3.jpg');"></div>
+    <div class="hero-gradient-overlay"></div>
+    <div class="container hero-content d-flex flex-column justify-content-center align-items-start text-start">
+        <h1 class="display-3 fw-bold animate-fadein-up">Unsere Ausrüstung</h1>
+        <p class="lead mt-3 animate-fadein-up delay-1">Modern, leistungsfähig, <span class="highlight">einsatzbereit</span></p>
+        <a href="#start" class="btn btn-secondary btn-lg mt-4 animate-fadein-up delay-2">
+            Jetzt mehr erfahren <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+    </div>
+</header>
+
+
+
+<!-- ============================= -->
+<!--   SECTION: Fahrzeugflotte     -->
+<!-- ============================= -->
+<section id="start" class="fd-section fd-band">
+    <div class="container">
+
+        <h2 class="fd-heading text-center">Fahrzeugflotte im Überblick</h2>
+        <div class="fd-underline mx-auto"></div>
+
+        <div class="row g-4 mt-4">
+
+            <!-- Vehicle 1 -->
+            <div class="col-md-4">
+                <div class="fd-card h-100">
+                    <div class="ratio ratio-16x9">
+                        <img src="../img/hlftitle.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="p-3">
+                        <div class="fd-card-title"><i class="bi bi-fire"></i>HLF3</div>
+                        <p>4000 l Tank, Rettungssatz, Lichtmast – unser stärkstes Allround-Einsatzfahrzeug.</p>
+                        <button class="btn-fd w-100 mt-2 toggle-btn" data-bs-target="#hlfa3-info">Mehr erfahren</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicle 2 -->
+            <div class="col-md-4">
+                <div class="fd-card h-100">
+                    <div class="ratio ratio-16x9">
+                        <img src="../img/lfa2.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="p-3">
+                        <div class="fd-card-title"><i class="bi bi-droplet-half"></i>LFA</div>
+                        <p>Tragkraftspritze, Schläuche, Strom — perfekt für Wasserförderung & Zusammenarbeit.</p>
+                        <button class="btn-fd w-100 mt-2 toggle-btn" data-bs-target="#pumpe-info">Mehr erfahren</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicle 3 -->
+            <div class="col-md-4">
+                <div class="fd-card h-100">
+                    <div class="ratio ratio-16x9">
+                        <img src="../img/mtfa1.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="p-3">
+                        <div class="fd-card-title"><i class="bi bi-people-fill"></i>MTFA</div>
+                        <p>Transport, Lotsendienst, Absicherung — flexibel, schnell, essenziell.</p>
+                        <button class="btn-fd w-100 mt-2 toggle-btn" data-bs-target="#mtfa-info">Mehr erfahren</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- DETAIL PANELS -->
+        <div class="mt-5">
+
+            <!-- HLF3 -->
+            <div id="hlfa3-info" class="collapse detail-area">
+                <div class="fd-detail">
+                    <h4>HLF3 im Detail</h4>
+                    <p>4000 l Wasser, hydraulischer Rettungssatz, Druckbelüfter, Lichtmast – das Rückgrat vieler Einsätze.</p>
+
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4"><img src="../img/hlf1.jpg" class="img-fluid rounded"></div>
+                        <div class="col-md-4"><img src="../img/hlf2.jpg" class="img-fluid rounded"></div>
+                        <div class="col-md-4"><img src="../img/hlf3.jpg" class="img-fluid rounded"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LFA -->
+            <div id="pumpe-info" class="collapse detail-area">
+                <div class="fd-detail">
+                    <h4>LFA im Detail</h4>
+                    <p>Ideal für Wasserversorgung, lange Schlauchstrecken und Unterstützung großer Einsatzlagen.</p>
+
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4"><img src="../img/lfa1.jpg" class="img-fluid rounded"></div>
+                        <div class="col-md-4"><img src="../img/lfa2.jpg" class="img-fluid rounded"></div>
+                        <div class="col-md-4"><img src="../img/lfa3.jpg" class="img-fluid rounded"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MTFA -->
+            <div id="mtfa-info" class="collapse detail-area">
+                <div class="fd-detail">
+                    <h4>MTFA im Detail</h4>
+                    <p>Transportfahrzeug für Mannschaft & Gerät. Wichtig bei Verkehrsunfällen, Lotsendiensten & Events.</p>
+
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-4"><img src="../img/mtfa1.jpg" class="img-fluid rounded"></div>
+                        <div class="col-md-4"><img src="../img/mtfa2.jpg" class="img-fluid rounded"></div>
+                        <div class="col-md-4"><img src="../img/mtfa3.jpg" class="img-fluid rounded"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- ============================= -->
+<!--   SECTION: Equipment Overview (Corrected Mirroring) -->
+<!-- ============================= -->
+<section class="fd-section fd-band">
+    <div class="container">
+
+        <h2 class="fd-heading text-center">Einsatzmaterial im Überblick</h2>
+        <div class="fd-underline mx-auto"></div>
+
+        <div class="row g-4 mt-4 fd-equip-split">
+
+            <!-- LEFT TILE 1 (icon left, text right) -->
+            <div class="col-md-6">
+                <div class="fd-equip-tile fd-left">
+                    <div class="fd-equip-icon"><i class="bi bi-hammer"></i></div>
+                    <div class="fd-equip-textwrap">
+                        <h5 class="fd-equip-title">Rettung & Bergung</h5>
+                        <p class="fd-equip-text">Hydraulische Schere, Spreizer, Stempel, Spineboard, Glasmanagement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT TILE 1 (text left, icon right) -->
+            <div class="col-md-6">
+                <div class="fd-equip-tile fd-right">
+                    <div class="fd-equip-textwrap text-end">
+                        <h5 class="fd-equip-title">Löschtechnik</h5>
+                        <p class="fd-equip-text">Atemschutz, Wärmebildkamera, Strahlrohre, Pumpen & mobile Systeme.</p>
+                    </div>
+                    <div class="fd-equip-icon"><i class="bi bi-fire"></i></div>
+                </div>
+            </div>
+
+            <!-- LEFT TILE 2 (icon left, text right) -->
+            <div class="col-md-6">
+                <div class="fd-equip-tile fd-left">
+                    <div class="fd-equip-icon"><i class="bi bi-tools"></i></div>
+                    <div class="fd-equip-textwrap">
+                        <h5 class="fd-equip-title">Technische Ausrüstung</h5>
+                        <p class="fd-equip-text">Motorsägen, Trennschleifer, Beleuchtung, Notstrom, Spezialwerkzeuge.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT TILE 2 (text left, icon right) -->
+            <div class="col-md-6">
+                <div class="fd-equip-tile fd-right">
+                    <div class="fd-equip-textwrap text-end">
+                        <h5 class="fd-equip-title">Absicherung & Kommunikation</h5>
+                        <p class="fd-equip-text">Funk, LED-Warntafeln, Lotsenausrüstung, Verkehrsabsicherung.</p>
+                    </div>
+                    <div class="fd-equip-icon"><i class="bi bi-cone-striped"></i></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+<!-- ============================= -->
+<!--   SECTION: Feuerwehrhaus      -->
+<!-- ============================= -->
+<section class="fd-section fd-band">
+    <div class="container">
+
+        <h2 class="fd-heading text-left">Unser Feuerwehrhaus</h2>
+        <div class="fd-underline"></div>
+        
+
+        <div class="row g-5 align-items-center mt-4">
+
+            <div class="col-lg-6">
+                <div class="fd-house-img">
+                    <img src="../img/haus.jpg" class="img-fluid" alt="">
+                </div>
+            </div>
+
+            <div class="col-lg-6 fd-house-text">
+                <h3>Modern, funktional, bereit.</h3>
+                <p class="lead">Herzstück unserer Organisation — perfekt ausgestattet und optimiert auf kurze Wege und schnelle Ausrückzeiten.</p>
+
+                <ul class="list-unstyled mt-4 fd-house-list">
+                    <li class="mb-3 d-flex align-items-start"><i class="bi bi-door-open me-3"></i>3 Fahrzeugboxen + Werkstattbereiche</li>
+                    <li class="mb-3 d-flex align-items-start"><i class="bi bi-tools me-3"></i>Schulungs- & Aufenthaltsräume</li>
+                    <li class="mb-3 d-flex align-items-start"><i class="bi bi-droplet-half me-3"></i>Umkleiden & Hygienebereiche</li>
+                    <li class="mb-3 d-flex align-items-start"><i class="bi bi-lightning me-3"></i>Notstrom & Alarmsysteme</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- bottom images -->
+        <div class="row fd-house-mini mt-5 g-4">
+            <div class="col-md-4"><img src="../img/garage.jpg" class="img-fluid"></div>
+            <div class="col-md-4"><img src="../img/präsi.jpg" class="img-fluid"></div>
+            <div class="col-md-4"><img src="../img/park.jpg" class="img-fluid"></div>
+        </div>
+
+        <div class="text-center mt-4">
+            <blockquote class="blockquote fst-italic text-white">
+                <p>„Ein starkes Haus für eine starke Mannschaft – bereit für jeden Einsatz.“</p>
+            </blockquote>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- ============================= -->
+<!--   CTA: Einsatzberichte         -->
+<!-- ============================= -->
+<section class="fd-section text-center fd-band">
+    <div class="container">
+
+        <div class="fd-cta-panel">
+            <h3 class="fd-heading" style="font-size:1.8rem;">Unsere Ausrüstung im Einsatz</h3>
+            <p class="text-light">Erleben Sie echte Einsätze, dokumentiert mit Bildern & Berichten.</p>
+            <a href="einsaetze.html" class="btn-fd btn-lg mt-2"><i class="bi bi-chevron-right me-2"></i>Zu den Einsätzen</a>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<!-- ================== FOOTER (unchanged) ================== -->
+<footer class="footer text-white pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Kontakt</h5>
+                <p>Adresse: Musterstraße 123<br>12345 Musterstadt</p>
+                <p>Telefon: +43 123 456789</p>
+                <p>E-Mail: info@firma.at</p>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Informationen</h5>
+                <ul class="list-unstyled">
+                    <li><a href="../index.html" class="footer-link">Startseite</a></li>
+                    <li><a href="uns.html" class="footer-link">Über uns</a></li>
+                    <li><a href="ausruestung.html" class="footer-link">Ausrüstung</a></li>
+                    <li><a href="karriere.html" class="footer-link">Karriere</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Folgen Sie uns</h5>
+                <a href="#" class="footer-social me-3"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="footer-social me-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <hr class="bg-light">
+        <div class="text-center">
+            <small>&copy; 2025 Firmenname. Alle Rechte vorbehalten.</small>
+        </div>
+    </div>
+</footer>
+
+
+<!-- SCRIPT: vehicle details animation -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+
+            const targetId = this.getAttribute('data-bs-target');
+            const targetEl = document.querySelector(targetId);
+
+            // Close others
+            document.querySelectorAll('.detail-area.show')
+                .forEach(el => {
+                    if (el !== targetEl) new bootstrap.Collapse(el, {toggle:false}).hide();
+                });
+
+            // Toggle this
+            const collapse = new bootstrap.Collapse(targetEl, {toggle:false});
+            targetEl.classList.contains('show') ? collapse.hide() : collapse.show();
+        });
+    });
+</script>
+
+<script>
+window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('navbar-shrink');
+        navbar.classList.remove('navbar-large');
+    } else {
+        navbar.classList.remove('navbar-shrink');
+        navbar.classList.add('navbar-large');
+    }
+});
+</script>
+
+</body>
+</html>
