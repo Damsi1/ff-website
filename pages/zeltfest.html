@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feuerwehrfest — FF Viehdorf</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <!-- ===============================
+         INPAGE CSS – FF FEST
+         =============================== -->
+    <style>
+    :root {
+        --fd-bg:#1b1c20;
+        --fd-panel:#24262b;
+        --fd-panel-light:#2d2f34;
+        --fd-border:rgba(255,255,255,.1);
+        --fd-red:#b70000;
+        --fd-yellow:#d5e000;
+        --fd-radius:14px;
+        --fd-title:'Uncage',sans-serif;
+    }
+
+    body{background:var(--fd-bg)}
+    .fd-section{padding:4rem 0}
+
+    .fd-heading{
+        font-family:var(--fd-title);
+        color:#fff;
+        font-size:2.4rem;
+    }
+
+    .fd-underline{
+        width:90px;
+        height:5px;
+        margin:.6rem 0 2rem;
+        background:linear-gradient(90deg,var(--fd-yellow),var(--fd-red));
+        border-radius:6px;
+    }
+
+    .fd-panel{
+        background:var(--fd-panel);
+        border:1px solid var(--fd-border);
+        border-radius:var(--fd-radius);
+        padding:2rem;
+        color:#d0d0d0;
+    }
+
+    .fd-highlight{
+        background:var(--fd-panel-light);
+        border-radius:12px;
+        padding:1.6rem;
+        border:1px solid var(--fd-border);
+        height:100%;
+    }
+
+    .fd-highlight i{
+        color:var(--fd-yellow);
+        font-size:2rem;
+    }
+
+    /* =====================
+       CAROUSEL
+       ===================== */
+    .fd-carousel img{
+        height:420px;
+        object-fit:cover;
+    }
+
+    /* =====================
+       LOCKED YEAR MODULE
+       ===================== */
+    .fd-year-locked{
+        position:relative;
+        border-radius:var(--fd-radius);
+        border:1px solid var(--fd-border);
+        background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(0,0,0,.25)),var(--fd-panel);
+        padding:2.6rem;
+        overflow:hidden;
+    }
+
+.fd-year-locked::before{
+    content:"INFOS FOLGEN • INFOS FOLGEN • INFOS FOLGEN";
+    position:absolute;
+    top:45%;
+    left:-35%;
+    width:170%;
+    padding:.8rem 0;
+    text-align:center;
+
+    font-weight:800;
+    font-size:.95rem;
+    letter-spacing:2px;
+
+    /* text color */
+    color:#e6e6e6;
+
+    /* OUTLINE via layered shadows (sharp, no blur) */
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+
+        /* subtle depth */
+         0 2px 4px rgba(0,0,0,.55);
+
+    background:repeating-linear-gradient(
+        45deg,
+        #d5e000 0,
+        #d5e000 22px,
+        #111 22px,
+        #111 44px
+    );
+
+    transform:rotate(-6deg) translateZ(0);
+    will-change:transform;
+
+    box-shadow:
+        0 14px 34px rgba(0,0,0,.65),
+        inset 0 1px 0 rgba(255,255,255,.25),
+        inset 0 -2px 0 rgba(0,0,0,.45);
+
+    z-index:3;
+}
+
+
+    .fd-year-locked::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.65));
+        z-index:2;
+    }
+
+    .fd-year-locked-content{
+        position:relative;
+        z-index:1;
+        text-align:center;
+        color:#d0d0d0;
+    }
+
+    .fd-year-locked-content i{
+        font-size:2.4rem;
+        color:var(--fd-yellow);
+        margin-bottom:.6rem;
+    }
+
+    /* =====================
+       IMAGE GRID
+       ===================== */
+    .fd-img-card{
+        position:relative;
+        height:260px;
+        border-radius:var(--fd-radius);
+        overflow:hidden;
+        border:1px solid var(--fd-border);
+        box-shadow:0 12px 28px rgba(0,0,0,.55);
+    }
+
+    .fd-img-card img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    /* =====================
+       CTA
+       ===================== */
+    .fd-cta{
+        background:linear-gradient(90deg,rgba(183,0,0,.25),rgba(213,224,0,.08));
+        border-radius:var(--fd-radius);
+        padding:2.6rem;
+        text-align:center;
+        border:1px solid var(--fd-border);
+    }
+
+    .btn-fd{
+        background:var(--fd-red);
+        color:#fff;
+        border:none;
+        padding:.75rem 1.4rem;
+        border-radius:10px;
+        font-weight:600;
+    }
+
+    .btn-fd:hover{background:#990000}
+
+    @media(max-width:768px){
+        .fd-section{padding:2.6rem 0}
+        .fd-heading{font-size:1.8rem}
+        .fd-carousel img{height:260px}
+    }
+
+    /* =========================
+   FEST – TIMELINE HIGHLIGHTS
+   ========================= */
+
+.fd-fest-timeline {
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.01),
+        rgba(0,0,0,0.18)
+    );
+}
+
+/* Wrapper for timeline */
+.fd-timeline-wrapper {
+    position: relative;
+    padding-top: 3rem;
+}
+
+/* Horizontal timeline line */
+.fd-timeline-line {
+    position: absolute;
+    top: 2.2rem;
+    left: 0;
+    right: 0;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--fd-yellow),
+        transparent
+    );
+
+    opacity: 0.7;
+}
+
+/* Timeline item */
+.fd-timeline-item {
+    position: relative;
+    height: 100%;
+}
+
+/* slight vertical offset for middle item */
+.fd-timeline-offset {
+    transform: translateY(22px);
+}
+
+/* Year label */
+.fd-timeline-year {
+    text-align: center;
+    margin-bottom: 0.8rem;
+
+    font-family: var(--fd-title);
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    color: var(--fd-yellow);
+}
+
+/* Card */
+.fd-timeline-card {
+    background: var(--fd-panel);
+    border-radius: var(--fd-radius);
+    border: 1px solid var(--fd-border);
+
+    padding: 1.6rem;
+    height: 100%;
+
+    box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.fd-timeline-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 46px rgba(0,0,0,0.7);
+}
+
+/* Image placeholder */
+.fd-timeline-img {
+    height: 180px;
+    margin-bottom: 1rem;
+
+    border-radius: 10px;
+    border: 1px solid var(--fd-border);
+
+    background: repeating-linear-gradient(
+        45deg,
+        #2a2c31,
+        #2a2c31 12px,
+        #24262b 12px,
+        #24262b 24px
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #aaa;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Card text */
+.fd-timeline-card h5 {
+    font-family: var(--fd-title);
+    color: #fff;
+    margin-bottom: .4rem;
+}
+
+.fd-timeline-card p {
+    color: #d0d0d0;
+    margin-bottom: 0;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 767.98px) {
+
+    .fd-timeline-line {
+        display: none;
+    }
+
+    .fd-timeline-offset {
+        transform: none;
+    }
+
+    .fd-timeline-img {
+        height: 160px;
+    }
+
+    .fd-timeline-year {
+        margin-top: 1rem;
+    }
+}
+
+/* =========================
+   FEST – TIMELINE SECTION
+   ========================= */
+
+.fd-fest-timeline {
+    position: relative;
+}
+
+/* Wrapper */
+.fd-timeline-wrapper {
+    position: relative;
+    padding-top: 2rem;
+}
+
+/* Vertical timeline line */
+.fd-timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: linear-gradient(
+        180deg,
+        rgba(213,224,0,0.6),
+        rgba(183,0,0,0.6)
+    );
+    transform: translateX(-50%);
+    opacity: 0.35;
+}
+
+/* Timeline item */
+.fd-timeline-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Offset for middle card */
+.fd-timeline-offset {
+    margin-top: 3rem;
+}
+
+/* Year label */
+.fd-timeline-year {
+    font-family: var(--fd-title);
+    font-size: 1.8rem;
+    color: var(--fd-yellow);
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Card */
+.fd-timeline-card {
+    background: var(--fd-panel);
+    border-radius: var(--fd-radius);
+    border: 1px solid var(--fd-border);
+    padding: 1.6rem;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Image container */
+.fd-timeline-img {
+    position: relative;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: #111;
+}
+
+/* Actual image */
+.fd-timeline-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Dark gradient overlay for readability */
+.fd-timeline-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.55)
+    );
+}
+
+/* Headline inside card */
+.fd-timeline-card h5 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+/* Text */
+.fd-timeline-card p {
+    color: #d0d0d0;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* =========================
+   MOBILE ADJUSTMENTS
+   ========================= */
+@media (max-width: 991.98px) {
+    .fd-timeline-line {
+        display: none;
+    }
+
+    .fd-timeline-offset {
+        margin-top: 0;
+    }
+
+    .fd-timeline-year {
+        font-size: 1.6rem;
+    }
+}
+
+/* =========================
+   FEST – TIMELINE SECTION
+   (FULL OPTIC RESTORED)
+   ========================= */
+
+.fd-fest-timeline {
+    position: relative;
+}
+
+/* Wrapper */
+.fd-timeline-wrapper {
+    position: relative;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+/* =========================
+   CENTRAL TIMELINE LINE
+   ========================= */
+.fd-timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: linear-gradient(
+        180deg,
+        rgba(213,224,0,0.65),
+        rgba(183,0,0,0.65)
+    );
+    transform: translateX(-50%);
+    opacity: 0.45;
+    z-index: 1;
+}
+
+/* =========================
+   TIMELINE ITEM
+   ========================= */
+.fd-timeline-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+/* Offset for middle column */
+.fd-timeline-offset {
+    margin-top: 3.2rem;
+}
+
+/* =========================
+   TIMELINE DOT
+   ========================= */
+.fd-timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+
+    background: var(--fd-panel);
+    border: 3px solid var(--fd-yellow);
+
+    box-shadow:
+        0 0 0 6px rgba(213,224,0,0.12),
+        0 6px 14px rgba(0,0,0,0.55);
+
+    z-index: 3;
+}
+
+/* =========================
+   CONNECTOR LINE (DOT → CARD)
+   ========================= */
+.fd-timeline-item::after {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 28px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(213,224,0,0.8),
+        rgba(213,224,0,0)
+    );
+
+    z-index: 2;
+}
+
+/* =========================
+   YEAR LABEL
+   ========================= */
+.fd-timeline-year {
+    font-family: var(--fd-title);
+    font-size: 1.85rem;
+    color: var(--fd-yellow);
+    text-align: center;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1.2px;
+}
+
+/* =========================
+   CARD
+   ========================= */
+.fd-timeline-card {
+    background: var(--fd-panel);
+    border-radius: var(--fd-radius);
+    border: 1px solid var(--fd-border);
+    padding: 1.6rem;
+
+    box-shadow:
+        0 14px 34px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* =========================
+   IMAGE
+   ========================= */
+.fd-timeline-img {
+    position: relative;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: #111;
+}
+
+.fd-timeline-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.fd-timeline-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.55)
+    );
+}
+
+/* =========================
+   TEXT
+   ========================= */
+.fd-timeline-card h5 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.fd-timeline-card p {
+    color: #d0d0d0;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* =========================
+   MOBILE – STACKED (TIMELINE OFF)
+   ========================= */
+@media (max-width: 991.98px) {
+
+    .fd-timeline-line {
+        display: none;
+    }
+
+    .fd-timeline-item::before,
+    .fd-timeline-item::after {
+        display: none;
+    }
+
+    .fd-timeline-offset {
+        margin-top: 0;
+    }
+
+    .fd-timeline-year {
+        font-size: 1.6rem;
+    }
+}
+
+/* =========================
+   TOP HORIZONTAL CONNECTOR
+   ========================= */
+
+/* Horizontal line connecting all timeline items */
+.fd-timeline-wrapper::before {
+    content: "";
+    position: absolute;
+
+    /* align with year labels / dots */
+    top: 44px;
+    left: 0;
+    right: 0;
+
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(213,224,0,0.0),
+        rgba(213,224,0,0.55),
+        
+        rgba(213,224,0,0.55),
+        rgba(213,224,0,0.0)
+    );
+
+    z-index: 1;
+}
+
+/* Ensure timeline dots stay above the line */
+.fd-timeline-item::before {
+    z-index: 4;
+}
+
+/* Slight glow on intersection points */
+.fd-timeline-item::before {
+    box-shadow:
+        0 0 0 6px rgba(213,224,0,0.12),
+        0 0 18px rgba(213,224,0,0.45),
+        0 6px 14px rgba(0,0,0,0.55);
+}
+
+/* =========================
+   FEST CAROUSEL
+   ========================= */
+
+.fd-carousel {
+    border-radius: var(--fd-radius);
+    border: 1px solid var(--fd-border);
+    box-shadow: 0 18px 42px rgba(0,0,0,0.6);
+    overflow: hidden;
+}
+
+.fd-carousel img {
+    height: 360px;
+    object-fit: cover;
+}
+
+/* Controls visibility */
+.fd-carousel .carousel-control-prev-icon,
+.fd-carousel .carousel-control-next-icon {
+    filter: drop-shadow(0 0 6px rgba(0,0,0,0.7));
+}
+
+/* Indicators styling */
+.fd-carousel .carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.6);
+}
+
+.fd-carousel .carousel-indicators .active {
+    background-color: var(--fd-yellow);
+}
+
+/* Mobile */
+@media (max-width: 767.98px) {
+    .fd-carousel img {
+        height: 240px;
+    }
+}
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAV (unchanged) -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-large">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="../img/logo.png" class="logo-img me-2">
+            <span class="brand-text">FF-Viehdorf</span>
+        </a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Start</a></li>
+                <li class="nav-item"><a class="nav-link" href="uns.html">Über uns</a></li>
+                <li class="nav-item"><a class="nav-link" href="ausruestung.html">Ausrüstung</a></li>
+                <li class="nav-item"><a class="nav-link" href="fj.html">Feuerwehrjugend</a></li>
+                <li class="nav-item"><a class="nav-link active" href="fest.html">Feuerwehrfest</a></li>
+                <li class="nav-item"><a class="nav-link" href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<!-- HERO --> <header class="hero-modern position-relative text-white"> <div class="hero-bg" style="background-image: url('../img/zeltfest.jpg');"></div> <div class="hero-gradient-overlay"></div> <div class="container hero-content d-flex flex-column justify-content-center align-items-start text-start"> <h1 class="display-3 fw-bold animate-fadein-up">Unser Zeltfest</h1> <p class="lead mt-3 animate-fadein-up delay-1">Gemeinschaft, Musik & <span class="highlight">gelebtes Ehrenamt</span>.</p> <a href="#start" class="btn btn-secondary btn-lg mt-4 animate-fadein-up delay-2"> Jetzt mehr erfahren <i class="bi bi-arrow-right ms-2"></i> </a> </div> </header>
+
+<!-- INFO + CAROUSEL -->
+<section id="start" class="fd-section">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+
+            <!-- TEXT -->
+            <div class="col-lg-5">
+                <h2 class="fd-heading">Ein Fest für die ganze Gemeinde</h2>
+                <div class="fd-underline"></div>
+
+                <div class="fd-panel">
+                    Das Viehdorfer Feuerwehrfest ist ein fixer Bestandteil
+                    des Gemeindelebens – gemütlich, gesellig und offen
+                    für alle Generationen.
+                </div>
+            </div>
+
+            <!-- CAROUSEL -->
+            <div class="col-lg-7">
+
+                <div
+                    id="festCarousel"
+                    class="carousel slide fd-carousel"
+                    data-bs-ride="carousel"
+                    data-bs-interval="4500"
+                    data-bs-pause="hover"
+                >
+
+                    <!-- INDICATORS (clickable dots) -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#festCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#festCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#festCarousel" data-bs-slide-to="2"></button>
+                    </div>
+
+                    <!-- SLIDES -->
+                    <div class="carousel-inner rounded overflow-hidden">
+
+                        <div class="carousel-item active">
+                            <img src="../img/stimmung.jpg" class="d-block w-100" alt="Feststimmung">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="../img/draufgang.jpg" class="d-block w-100" alt="Live Musik">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="../img/hendl.jpg" class="d-block w-100" alt="Essen & Gäste">
+                        </div>
+
+                    </div>
+
+                    <!-- CONTROLS -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#festCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#festCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- HIGHLIGHTS -->
+<section class="fd-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="fd-highlight">
+                    <i class="bi bi-music-note-beamed"></i>
+                    <h4>Festzelt & Musik</h4>
+                    Live-Musik, gesellige Abende & beste Stimmung.
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="fd-highlight">
+                    <i class="bi bi-cup-hot-fill"></i>
+                    <h4>Speisen & Getränke</h4>
+                    Regionale Küche, Klassiker & Barbetrieb.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- YEAR LOCKED -->
+<section class="fd-section">
+    <div class="container text-center">
+        <h2 class="fd-heading">Aktuelles Jahr</h2>
+        <div class="fd-underline mx-auto"></div>
+
+        <div class="fd-year-locked">
+            <div class="fd-year-locked-content">
+                <i class="bi bi-cone-striped"></i>
+                <h3>Vorbereitungen laufen</h3>
+                Details folgen, sobald alles fixiert ist.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMAGES -->
+<!-- HIGHLIGHTS DER LETZTEN JAHRE – TIMELINE -->
+<section class="fd-section fd-fest-timeline">
+    <div class="container">
+
+        <h2 class="fd-heading">Highlights der letzten Jahre</h2>
+        <div class="fd-underline"></div>
+
+        <div class="fd-timeline-wrapper position-relative">
+
+            <!-- Timeline line -->
+            <div class="fd-timeline-line"></div>
+
+            <div class="row g-4 align-items-stretch">
+
+                <!-- YEAR 2024 -->
+                <div class="col-lg-4 d-flex">
+                    <div class="fd-timeline-item w-100">
+
+                        <div class="fd-timeline-year">2024</div>
+
+                        <div class="fd-timeline-card h-100">
+                            <div class="fd-timeline-img">
+                                <!-- Bild austauschen -->
+                                <img src="../img/nockis.jpg" alt="Feuerwehrfest 2024 – Abendstimmung">
+                            </div>
+
+                            <h5>Musik, Emotion &amp; Gänsehaut</h5>
+                            <p>
+                                Mit den Nockis durfte das Fest 2024 einen ganz besonderen
+                                musikalischen Höhepunkt erleben. Zahlreiche Besucher sorgten
+                                für ein volles Festzelt, großartige Stimmung und einen Abend,
+                                der vielen noch lange in Erinnerung bleiben wird.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- YEAR 2023 -->
+                <div class="col-lg-4 d-flex">
+                    <div class="fd-timeline-item fd-timeline-offset w-100">
+
+                        <div class="fd-timeline-year">2023</div>
+
+                        <div class="fd-timeline-card h-100">
+                            <div class="fd-timeline-img">
+                                <img src="../img/draufgaenger.jpg" alt="Feuerwehrfest 2023 – Draufgänger & Gäste">
+                            </div>
+
+                            <h5>Feiern bis in die Nacht</h5>
+                            <p>
+                                2023 stand ganz im Zeichen ausgelassener Stimmung.
+                                Mit den Draufgängern und den Jungen Zillertalern
+                                wurde bis spät in die Nacht gefeiert – begleitet von
+                                vielen Begegnungen und echtem Festgefühl.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- YEAR 2022 -->
+                <div class="col-lg-4 d-flex">
+                    <div class="fd-timeline-item w-100">
+
+                        <div class="fd-timeline-year">2022</div>
+
+                        <div class="fd-timeline-card h-100">
+                            <div class="fd-timeline-img">
+                                <img src="../img/melissa.jpg" alt="Feuerwehrfest 2022 – Gemeinschaft">
+                            </div>
+
+                            <h5>Tradition trifft Stimmung</h5>
+                            <p>
+                                Mit Melissa Naschenweng und den Edlseern bot das Fest 2022
+                                eine gelungene Mischung aus Tradition und moderner Musik.
+                                Viele Gäste nutzten das Fest als Treffpunkt für gemeinsames
+                                Feiern und gemütliches Beisammensein.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- CTA -->
+<section class="fd-section">
+    <div class="container">
+        <div class="fd-cta">
+            <h3>Wir freuen uns auf euren Besuch!</h3>
+            <p>Infos zum nächsten Fest werden rechtzeitig bekannt gegeben.</p>
+            <a href="kontakt.html" class="btn-fd">Kontakt aufnehmen</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER unchanged -->
+<footer class="footer text-white pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Kontakt</h5>
+                <p>Adresse: Musterstraße 123<br>3322 Viehdorf</p>
+                <p>Telefon: +43 123 456789</p>
+                <p>E-Mail: info@ff-viehdorf.at</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Informationen</h5>
+                <ul class="list-unstyled">
+                    <li><a href="../index.html#leistungen" class="footer-link">Leistungen</a></li>
+                    <li><a href="uns.html" class="footer-link">Über uns</a></li>
+                    <li><a href="#" class="footer-link">Kontakt</a></li>
+                    <li><a href="#" class="footer-link">Impressum</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Folgen Sie uns</h5>
+                <a href="#" class="footer-social me-3"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="footer-social me-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <hr class="bg-light">
+        <div class="text-center">
+            <small>&copy; 2025 Freiwillige Feuerwehr Viehdorf. Alle Rechte vorbehalten.</small>
+        </div>
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('einsatzChart');
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['2019','2020','2021','2022','2023','2024'],
+        datasets: [{
+            label: 'Einsätze',
+            data: [72,80,77,95,88,101],
+            borderColor: '#b70000',
+            backgroundColor: 'rgba(183,0,0,0.15)',
+            tension: 0.25,
+            borderWidth: 3,
+            pointBackgroundColor: '#d5e000',
+            pointRadius: 5,
+            pointHoverRadius: 7
+        }]
+    },
+    options: {
+        plugins: { legend: { labels: { color:'#fff' } } },
+        scales: {
+            x: { ticks:{ color:'#ddd' }, grid:{ color:'rgba(255,255,255,0.05)' }},
+            y: { ticks:{ color:'#ddd' }, grid:{ color:'rgba(255,255,255,0.05)' }}
+        }
+    }
+});
+
+ // Keep existing navbar shrink behavior (unchanged)
+    window.addEventListener('scroll', function () {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('navbar-shrink');
+            navbar.classList.remove('navbar-large');
+        } else {
+            navbar.classList.remove('navbar-shrink');
+            navbar.classList.add('navbar-large');
+        }
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
