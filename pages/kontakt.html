@@ -128,6 +128,135 @@
 .navbar[style] { }
 
 
+/* =========================
+   MOBILE SAFETY — KONTAKT
+   Desktop untouched
+   ========================= */
+@media (max-width: 767.98px) {
+
+    /* --- Global safety --- */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    .fd-section {
+        padding: 2.5rem 0;
+    }
+
+    /* --- HERO --- */
+    .hero-content {
+        padding: 0 1.2rem;
+    }
+
+    .hero-modern h1 {
+        font-size: 2.1rem;
+        line-height: 1.2;
+    }
+
+    .hero-modern .lead {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* --- HEADINGS (overflow-safe) --- */
+    .fd-heading {
+        font-size: 1.6rem;
+        line-height: 1.25;
+        padding: 0 0.5rem;
+
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+    }
+
+    .fd-underline {
+        max-width: 80px;
+        margin-bottom: 2rem;
+    }
+
+    /* Left-aligned headings → center on mobile */
+    .fd-heading.text-start {
+        text-align: center !important;
+    }
+
+    .fd-underline[style] {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* --- EMERGENCY STRIPE --- */
+    .fd-emergency {
+        padding: 2.2rem 1rem;
+    }
+
+    .fd-emergency h2 {
+        font-size: 1.4rem;
+        line-height: 1.3;
+    }
+
+    .fd-emergency p {
+        font-size: 1rem;
+    }
+
+    .fd-emergency .num {
+        font-size: 1.6rem;
+        padding: 0.4rem 0.9rem;
+        margin-top: 0.4rem;
+        display: inline-block;
+    }
+
+    /* --- FORM --- */
+    .fd-panel.fd-form {
+        padding: 1.4rem;
+    }
+
+    .fd-form label {
+        font-size: 0.95rem;
+    }
+
+    .fd-form .form-control {
+        font-size: 0.95rem;
+        padding: 0.7rem;
+    }
+
+    .fd-form button.btn-lg {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+    }
+
+    /* --- CONTACT INFO --- */
+    .fd-contact-item {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        align-items: flex-start;
+    }
+
+    .fd-contact-item i {
+        font-size: 1.3rem;
+        margin-top: 0.1rem;
+    }
+
+    /* --- MAP SECTION --- */
+    .fd-map-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    /* Stack map nicely */
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* --- SOCIAL BUTTONS --- */
+    .footer-social i {
+        font-size: 1.4rem;
+    }
+}
 
 
 

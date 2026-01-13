@@ -252,6 +252,182 @@
 
 
 
+/* =========================
+   MOBILE SAFETY OVERRIDES
+   Desktop remains unchanged
+   ========================= */
+@media (max-width: 767.98px) {
+
+    /* --- Global safety --- */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    .fd-section {
+        padding: 2.5rem 0;
+    }
+
+    /* --- HERO --- */
+    .hero-content {
+        padding: 0 1.2rem;
+    }
+
+    .hero-modern h1 {
+        font-size: 2.1rem;
+        line-height: 1.2;
+    }
+
+    .hero-modern .lead {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* --- TEAM INTRO --- */
+    .fd-team-panel {
+        padding: 1.5rem;
+    }
+
+    .fd-team-title {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .fd-team-stats {
+        justify-content: center;
+    }
+
+    .fd-team-stat {
+        font-size: 0.9rem;
+        padding: 0.45rem 0.7rem;
+    }
+
+    /* Ensure images scale cleanly */
+    .fd-team-img-wrap img,
+    .fd-timeline-img-wrap img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* --- LEADERSHIP CARDS --- */
+    .fd-lead-card {
+        padding: 1.4rem;
+    }
+
+    .fd-lead-avatar {
+        width: 110px;
+        height: 110px;
+    }
+
+    .fd-lead-name {
+        font-size: 1.15rem;
+    }
+
+    /* --- VALUES --- */
+    .fd-values-panel {
+        padding: 1.6rem;
+    }
+
+    .fd-value-tile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .fd-value-icon {
+        margin-bottom: 0.4rem;
+    }
+
+    /* --- TIMELINE --- */
+    .fd-timeline-line {
+        padding-left: 1.2rem;
+        border-left-width: 2px;
+    }
+
+    .fd-timeline-dot {
+        left: -1.45rem;
+    }
+
+    .fd-timeline-text {
+        max-width: 100%;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Stack image BELOW timeline on mobile */
+    .fd-timeline-img-wrap {
+        margin-top: 1.5rem;
+    }
+
+    /* --- STATS / CHART --- */
+    .fd-stats-card {
+        padding: 1.6rem;
+    }
+
+    .fd-stat-number {
+        font-size: 1.25rem;
+    }
+
+    /* Prevent chart overflow */
+    canvas {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* --- CTA --- */
+    .fd-cta {
+        padding: 1.6rem 1.2rem;
+    }
+
+    .fd-cta h3 {
+        font-size: 1.3rem;
+        line-height: 1.4;
+    }
+
+    .fd-cta p {
+        font-size: 0.95rem;
+    }
+
+    .btn-fd {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* =========================
+   FIX: MOBILE TEXT OVERFLOW
+   (Einsatzstatistik Heading)
+   ========================= */
+@media (max-width: 575.98px) {
+
+    /* Make all fd headings mobile-safe */
+    .fd-heading {
+        font-size: 1.6rem;
+        line-height: 1.25;
+        padding: 0 0.8rem;
+        text-align: center;
+
+        /* CRITICAL overflow fixes */
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+    }
+
+    /* Ensure underline never pushes width */
+    .fd-underline {
+        max-width: 70px;
+    }
+
+    /* Stats card padding tightened */
+    .fd-stats-card {
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
+    }
+}
+
 
     </style>
 </head>

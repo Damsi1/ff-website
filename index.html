@@ -278,6 +278,170 @@
     font-weight: 600;
 }
 
+/* =========================
+   MOBILE OPTIMIERUNG
+   (nur Ergänzungen – Desktop bleibt unverändert)
+   ========================= */
+
+/* Global overflow safety */
+html, body {
+    overflow-x: hidden;
+}
+
+/* ---------- HERO ---------- */
+@media (max-width: 767.98px) {
+    .hero-modern {
+        min-height: 80vh;
+    }
+
+    .hero-content {
+        padding: 0 1.2rem;
+    }
+
+    .hero-modern h1 {
+        font-size: 2.1rem;
+        line-height: 1.2;
+    }
+
+    .hero-modern .lead {
+        font-size: 1.05rem;
+    }
+}
+
+/* ---------- SECTION SPACING ---------- */
+@media (max-width: 767.98px) {
+    .fd-section {
+        padding: 2.4rem 0;
+    }
+}
+
+/* ---------- INTRO TEXT ---------- */
+@media (max-width: 767.98px) {
+    .fd-intro-par {
+        font-size: 1rem;
+        line-height: 1.7;
+        padding: 0 .4rem;
+    }
+}
+
+/* ---------- FACT BOXES ---------- */
+@media (max-width: 575.98px) {
+    .fd-intro-fact {
+        padding: 0.9rem 0.6rem;
+    }
+
+    .fd-intro-fact .num {
+        font-size: 1.3rem;
+    }
+}
+
+/* ---------- COLLAGE ---------- */
+@media (max-width: 767.98px) {
+    .collage-grid {
+        gap: 8px;
+    }
+
+    .collage-grid .item {
+        border-radius: 10px;
+    }
+}
+
+/* ---------- ÜBER UNS TEXT ---------- */
+@media (max-width: 767.98px) {
+    .fd-heading {
+        text-align: center;
+    }
+
+    .fd-underline {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .fd-section ul {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+/* ---------- AUSRÜSTUNG CARDS ---------- */
+@media (max-width: 767.98px) {
+    .fd-gear-card {
+        padding: 1.4rem;
+    }
+
+    .fd-gear-card h5 {
+        font-size: 1.15rem;
+    }
+
+    .fd-gear-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+}
+
+/* ---------- PARALLAX SECTION ---------- */
+@media (max-width: 767.98px) {
+    .parallax-section {
+        padding: 3rem 0;
+        background-attachment: scroll;
+    }
+
+    .parallax-panel {
+        padding: 1.6rem;
+    }
+}
+
+/* ---------- CTA / CONTACT ---------- */
+@media (max-width: 575.98px) {
+    .fd-contact {
+        padding: 1.6rem 1.2rem;
+    }
+
+    .fd-contact p {
+        font-size: 0.95rem;
+    }
+}
+
+/* ---------- BUTTONS (TOUCH FRIENDLY) ---------- */
+@media (max-width: 575.98px) {
+    .btn-lg {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* =========================
+   FIX: MOBILE COLLAGE GAP
+   ========================= */
+@media (max-width: 767.98px) {
+
+    /* Remove extra section padding */
+    .fd-section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Let collage shrink to its real content */
+    .collage-grid {
+        grid-template-rows: auto;
+        height: auto;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Ensure images define height naturally */
+    .collage-grid .item {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    /* Tighten spacing between collage & text */
+    .fd-section .col-md-5 {
+        padding-top: 0;
+    }
+}
+
+
     </style>
 </head>
 <body>
