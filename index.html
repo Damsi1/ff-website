@@ -471,6 +471,79 @@ html, body {
     transform: none !important;
 }
 
+/* =========================
+   FEUERWEHRFEST – JAHRESFIXPUNKT
+   ========================= */
+
+.fd-fest-anchor {
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.006),
+        rgba(0,0,0,0.03)
+    );
+}
+
+/* IMAGE */
+.fd-fest-anchor-img {
+    border-radius: var(--fd-radius);
+    overflow: hidden;
+    border: 1px solid var(--fd-border);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.55);
+}
+
+.fd-fest-anchor-img img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+}
+
+/* TEXT */
+.fd-fest-anchor-text {
+    padding-right: 0.6rem; /* vorher left → jetzt right */
+}
+
+/* Tag */
+.fd-fest-anchor-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    color: var(--fd-yellow);
+    text-transform: uppercase;
+}
+
+.fd-fest-anchor-text p {
+    color: #d2d2d2;
+    line-height: 1.65;
+    max-width: 560px;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+@media (max-width: 767.98px) {
+
+    .fd-fest-anchor-img img {
+        height: 220px;
+    }
+
+    .fd-fest-anchor-text {
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .fd-fest-anchor .fd-underline {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .fd-fest-anchor-text p {
+        max-width: 100%;
+    }
+}
 
 
     </style>
@@ -635,6 +708,60 @@ html, body {
         </div>
     </div>
 </section>
+
+<!-- =========================
+     FEUERWEHRFEST – JAHRESFIXPUNKT
+     ========================= -->
+<section class="fd-section fd-fest-anchor">
+    <div class="container">
+
+        <div class="row g-4 align-items-center">
+
+            <!-- TEXT -->
+            <div class="col-lg-7">
+                <div class="fd-fest-anchor-text">
+
+                    <span class="fd-fest-anchor-tag">
+                        <i class="bi bi-calendar-event"></i>
+                        Fixer Bestandteil im Jahresablauf
+                    </span>
+
+                    <h2 class="fd-heading mt-2">Feuerwehrfest Viehdorf</h2>
+                    <div class="fd-underline"></div>
+
+                    <p>
+                        Das Feuerwehrfest ist ein fester Bestandteil des
+                        Gemeindelebens in Viehdorf. Es verbindet Musik,
+                        Gemeinschaft und gemütliches Beisammensein
+                        für alle Generationen.
+                    </p>
+
+                    <p>
+                        Alle Informationen zum aktuellen Jahr, Rückblicke
+                        sowie Eindrücke vergangener Feste finden Sie
+                        auf der eigenen Fest-Seite.
+                    </p>
+
+                    <a href="pages/zeltfest.html" class="btn btn-outline-light mt-2">
+                        Zum Feuerwehrfest
+                        <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- IMAGE -->
+            <div class="col-lg-5">
+                <div class="fd-fest-anchor-img">
+                    <img src="img/zeltfest.jpg" alt="Feuerwehrfest Viehdorf">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 
 <!-- =========================
      AUSRÜSTUNG / LEISTUNGEN
