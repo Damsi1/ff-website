@@ -441,6 +441,37 @@ html, body {
     }
 }
 
+/* =========================
+   FIX: Sticky Navbar (Startseite)
+   ========================= */
+
+/* Never restrict overflow on root when using sticky */
+html, body {
+    overflow-x: visible;
+}
+
+/* Contain overflow safely without breaking sticky */
+.hero-modern,
+.fd-section,
+.collage-grid,
+.parallax-section {
+    overflow-x: hidden;
+}
+
+/* Hard-force navbar stickiness */
+.navbar {
+    position: sticky !important;
+    top: 0;
+    z-index: 1060;
+}
+
+/* Prevent any transform from killing sticky */
+.navbar,
+.navbar * {
+    transform: none !important;
+}
+
+
 
     </style>
 </head>
