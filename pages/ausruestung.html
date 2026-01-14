@@ -1087,8 +1087,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+/* =========================================================
+   MOBILE FIX — SCROLL TO OPENED VEHICLE DETAIL
+   ========================================================= */
+document.querySelectorAll(".detail-area").forEach(panel => {
+
+    panel.addEventListener("shown.bs.collapse", () => {
+
+        // mobile only
+        if (window.matchMedia("(max-width: 767.98px)").matches) {
+
+            // small delay so Bootstrap finishes layout
+            setTimeout(() => {
+                panel.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }, 120);
+        }
+
+    });
+
+});
+
 
 </script>
+
+
+
+
 
 </body>
 </html>

@@ -681,6 +681,148 @@ html, body {
     filter: drop-shadow(0 0 4px rgba(213,224,0,0.6));
 }
 
+/* Ensure grid display utility works */
+@media (min-width: 768px) {
+    .d-md-grid {
+        display: grid !important;
+    }
+}
+
+/* Mobile carousel polish */
+.fd-collage-carousel img {
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* =========================
+   MOBILE CAROUSEL – PREMIUM STYLING
+   ========================= */
+
+/* Carousel wrapper */
+.fd-collage-carousel {
+    position: relative;
+    margin-bottom: 1.2rem;
+}
+
+/* FIXED HEIGHT FRAME (no jumping) */
+.fd-collage-carousel .carousel-inner {
+    height: 260px; /* ← adjust once, stays stable */
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+}
+
+/* Ensure every slide fills the frame */
+.fd-collage-carousel .carousel-item {
+    height: 100%;
+}
+
+/* Images: same size, same crop */
+.fd-collage-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Subtle dark gradient for depth & readability */
+.fd-collage-carousel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.05),
+        rgba(0,0,0,0.45)
+    );
+    pointer-events: none;
+    border-radius: 14px;
+}
+
+/* =========================
+   CONTROLS – FF STYLE
+   ========================= */
+
+.fd-collage-carousel .carousel-control-prev,
+.fd-collage-carousel .carousel-control-next {
+    width: 15%;
+    opacity: 1;
+}
+
+.fd-collage-carousel .carousel-control-prev-icon,
+.fd-collage-carousel .carousel-control-next-icon {
+    width: 42px;
+    height: 42px;
+    background-size: 55% 55%;
+    border-radius: 12px;
+    background-color: rgba(0,0,0,0.55);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+}
+
+/* Accent glow on interaction */
+.fd-collage-carousel .carousel-control-prev:active .carousel-control-prev-icon,
+.fd-collage-carousel .carousel-control-next:active .carousel-control-next-icon {
+    box-shadow:
+        0 0 0 2px rgba(213,224,0,0.6),
+        0 8px 22px rgba(0,0,0,0.7);
+}
+
+/* =========================
+   MOBILE REFINEMENT
+   ========================= */
+@media (max-width: 575.98px) {
+
+    .fd-collage-carousel .carousel-inner {
+        height: 220px;
+    }
+
+    .fd-collage-carousel .carousel-control-prev-icon,
+    .fd-collage-carousel .carousel-control-next-icon {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* =========================
+   CAROUSEL DOTS – FF STYLE
+   ========================= */
+
+.fd-collage-carousel .carousel-indicators {
+    bottom: 10px;
+    gap: 6px;
+}
+
+.fd-collage-carousel .carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.45);
+    border: none;
+    opacity: 1;
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Active dot */
+.fd-collage-carousel .carousel-indicators .active {
+    background-color: var(--fd-yellow);
+    transform: scale(1.25);
+    box-shadow:
+        0 0 0 4px rgba(213,224,0,0.18),
+        0 4px 12px rgba(0,0,0,0.6);
+}
+
+/* Touch feedback */
+.fd-collage-carousel .carousel-indicators button:active {
+    transform: scale(1.4);
+}
+
+
+
 
 
 
@@ -796,14 +938,17 @@ html, body {
 
 
 <!-- =========================
-     ÜBER UNS (COLLAGE + TEXT)
+     ÜBER UNS (COLLAGE DESKTOP + CAROUSEL MOBILE)
      ========================= -->
 <section class="fd-section">
     <div class="container-fluid p-0">
         <div class="row g-0">
-            <!-- left collage -->
+
+            <!-- LEFT VISUAL -->
             <div class="col-md-7">
-                <div class="collage-grid">
+
+                <!-- DESKTOP COLLAGE -->
+                <div class="collage-grid d-none d-md-grid">
                     <img src="img/lager.jpg" class="item item-1" alt="Lager">
                     <img src="img/gewand.jpg" class="item item-2" alt="Gewand">
                     <img src="img/fahr3.jpg" class="item item-3" alt="Fahrzeug">
@@ -814,9 +959,67 @@ html, body {
                     <img src="img/unstitle.jpg" class="item item-8" alt="Titel">
                     <img src="img/hlf2.jpg" class="item item-9" alt="HLF">
                 </div>
+
+                <!-- MOBILE CAROUSEL -->
+                <div class="fd-collage-carousel d-block d-md-none">
+                    <div id="aboutCarousel" class="carousel slide" data-bs-touch="true">
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <img src="img/lager.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/gewand.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/fahr3.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/präsi.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/übung.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/haus.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/ausrust.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/unstitle.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/hlf2.jpg" class="d-block w-100" alt="">
+                            </div>
+
+                        </div>
+                        <!-- Indicators (dots) -->
+<div class="carousel-indicators">
+    <button type="button" data-bs-target="#collageCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#collageCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#collageCarousel" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#collageCarousel" data-bs-slide-to="3"></button>
+    <button type="button" data-bs-target="#collageCarousel" data-bs-slide-to="4"></button>
+    <button type="button" data-bs-target="#collageCarousel" data-bs-slide-to="5"></button>
+    <button type="button" data-bs-target="#collageCarousel" data-bs-slide-to="6"></button>
+    <button type="button" data-bs-target="#collageCarousel" data-bs-slide-to="7"></button>
+    <button type="button" data-bs-target="#collageCarousel" data-bs-slide-to="8"></button>
+</div>
+
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- right text -->
+            <!-- RIGHT TEXT (UNTOUCHED, SAME FOR DESKTOP & MOBILE) -->
             <div class="col-md-5 d-flex align-items-center">
                 <div class="p-4">
                     <h2 class="fd-heading">Das sind wir!</h2>
@@ -824,16 +1027,16 @@ html, body {
 
                     <ul class="list-unstyled">
                         <li class="mb-3 d-flex align-items-start">
-                            <i class="bi bi-people-fill text-accent fs-3 me-3" style="color:var(--fd-yellow)"></i>
-                            <span style="color:#e8e8e8">Unsere Mitglieder engagieren sich ehrenamtlich für die Sicherheit in Viehdorf.</span>
+                            <i class="bi bi-people-fill fs-3 me-3" style="color:var(--fd-yellow)"></i>
+                            <span>Unsere Mitglieder engagieren sich ehrenamtlich für die Sicherheit in Viehdorf.</span>
                         </li>
                         <li class="mb-3 d-flex align-items-start">
-                            <i class="bi bi-fire text-accent fs-3 me-3" style="color:var(--fd-yellow)"></i>
-                            <span style="color:#e8e8e8">Mit moderner Ausrüstung und regelmäßiger Ausbildung sind wir für jede Lage gerüstet.</span>
+                            <i class="bi bi-fire fs-3 me-3" style="color:var(--fd-yellow)"></i>
+                            <span>Mit moderner Ausrüstung und regelmäßiger Ausbildung sind wir für jede Lage gerüstet.</span>
                         </li>
                         <li class="mb-3 d-flex align-items-start">
-                            <i class="bi bi-lightning-charge text-accent fs-3 me-3" style="color:var(--fd-yellow)"></i>
-                            <span style="color:#e8e8e8">Schnelles, koordiniertes Handeln im Einsatz steht bei uns an erster Stelle.</span>
+                            <i class="bi bi-lightning-charge fs-3 me-3" style="color:var(--fd-yellow)"></i>
+                            <span>Schnelles, koordiniertes Handeln im Einsatz steht bei uns an erster Stelle.</span>
                         </li>
                     </ul>
 
@@ -841,12 +1044,16 @@ html, body {
                         <p class="mb-0">„Retten – Löschen – Bergen – Schützen“</p>
                     </blockquote>
 
-                    <a href="pages/uns.html" class="btn btn-outline-light btn-lg">Mehr erfahren</a>
+                    <a href="pages/uns.html" class="btn btn-outline-light btn-lg">
+                        Mehr erfahren
+                    </a>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
+
 
 <!-- =========================
      FEUERWEHRFEST – JAHRESFIXPUNKT
