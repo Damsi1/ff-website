@@ -430,6 +430,130 @@ html, body {
 }
 
 
+/* =========================
+   FOOTER – VISUAL ALIGNMENT
+   ========================= */
+
+.footer {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.006),
+            rgba(0,0,0,0.04)
+        );
+    border-top: 1px solid var(--fd-border);
+    box-shadow: inset 0 12px 30px rgba(0,0,0,0.55);
+    font-size: 0.95rem;
+}
+
+/* Footer headings */
+.footer h5 {
+    font-family: var(--fd-title);
+    font-size: 1.05rem;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* subtle underline accent */
+.footer h5::after {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 3px;
+    margin-top: 0.45rem;
+    background: linear-gradient(90deg, var(--fd-yellow), var(--fd-red));
+    border-radius: 4px;
+}
+
+/* Footer text */
+.footer p,
+.footer small {
+    color: #cfcfcf;
+    line-height: 1.6;
+}
+
+/* Footer links */
+.footer a {
+    color: #cfcfcf;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer a:hover {
+    color: var(--fd-yellow);
+    transform: translateX(2px);
+}
+
+/* Navigation list spacing */
+.footer ul li {
+    margin-bottom: 0.45rem;
+}
+
+/* Social icons */
+.footer-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--fd-panel-light);
+    border: 1px solid var(--fd-border);
+    color: #ffffff;
+    font-size: 1.15rem;
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.footer-social:hover {
+    background: rgba(183,0,0,0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.55);
+    color: var(--fd-yellow);
+}
+
+/* Divider */
+.footer hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+    margin: 2rem 0 1.5rem;
+}
+
+/* Bottom copyright line */
+.footer small {
+    opacity: 0.85;
+}
+
+/* =========================
+   MOBILE REFINEMENT
+   ========================= */
+@media (max-width: 767.98px) {
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer h5::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-social {
+        margin: 0 0.35rem;
+    }
+}
+
+
 
     </style>
 </head>
@@ -602,7 +726,7 @@ html, body {
     </div>
 </section>
 
-<!-- FOOTER (unchanged) -->
+<!-- ================== FOOTER (unchanged) ================== -->
 <footer class="footer text-white pt-5 pb-4">
     <div class="container">
         <div class="row">
@@ -612,6 +736,7 @@ html, body {
                 <p>Telefon: +43 123 456789</p>
                 <p>E-Mail: info@firma.at</p>
             </div>
+
             <div class="col-md-4 mb-4">
                 <h5 class="mb-3">Informationen</h5>
                 <ul class="list-unstyled">
@@ -621,6 +746,7 @@ html, body {
                     <li><a href="karriere.html" class="footer-link">Karriere</a></li>
                 </ul>
             </div>
+
             <div class="col-md-4 mb-4">
                 <h5 class="mb-3">Folgen Sie uns</h5>
                 <a href="#" class="footer-social me-3"><i class="bi bi-facebook"></i></a>
