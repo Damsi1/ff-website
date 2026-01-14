@@ -823,6 +823,184 @@ html, body {
 
 
 
+/* =========================
+   NEWS → FACEBOOK BRIDGE
+   ========================= */
+
+.fd-news-bridge {
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.006),
+        rgba(0,0,0,0.03)
+    );
+}
+
+/* Right panel */
+.fd-news-panel {
+    position: relative;
+    background: var(--fd-panel);
+    border-radius: var(--fd-radius);
+    border: 1px solid var(--fd-border);
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.55);
+}
+
+/* Individual rows */
+.fd-news-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    background: var(--fd-panel-light);
+    border: 1px solid var(--fd-border);
+}
+
+.fd-news-item i {
+    font-size: 1.4rem;
+    color: var(--fd-yellow);
+}
+
+.fd-news-item strong {
+    display: block;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.fd-news-item span {
+    font-size: 0.85rem;
+    color: #cfcfcf;
+}
+
+/* Live badge */
+.fd-news-live {
+    margin-top: 0.6rem;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--fd-yellow);
+}
+
+.fd-news-live span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--fd-yellow);
+    box-shadow: 0 0 0 4px rgba(213,224,0,0.18);
+}
+
+/* Mobile */
+@media (max-width: 767.98px) {
+    .fd-news-panel {
+        text-align: left;
+    }
+}
+
+/* =========================
+   FEUERWEHRFEST – HIGHLIGHT EDITION
+   ========================= */
+
+.fd-fest-anchor {
+    position: relative;
+    background:
+        radial-gradient(
+            120% 80% at 20% 40%,
+            rgba(213,224,0,0.06),
+            transparent 60%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.006),
+            rgba(0,0,0,0.05)
+        );
+}
+
+/* Make text feel a bit more editorial */
+.fd-fest-anchor-text .fd-heading {
+    font-size: 2.15rem;
+}
+
+.fd-fest-anchor-text p {
+    font-size: 1.02rem;
+}
+
+/* Image highlight treatment */
+.fd-fest-highlight {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle vignette */
+.fd-fest-highlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.35)
+        );
+    pointer-events: none;
+}
+
+/* Ribbon / badge */
+.fd-fest-ribbon {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #111;
+    background: var(--fd-yellow);
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+/* Slight zoom on hover (desktop only) */
+@media (hover: hover) {
+    .fd-fest-anchor-img img {
+        transition: transform 0.6s ease;
+    }
+
+    .fd-fest-anchor-img:hover img {
+        transform: scale(1.04);
+    }
+}
+
+@media (min-width: 992px) {
+    .fd-fest-anchor-text .fd-underline {
+        margin-left: 0;
+    }
+}
+
+.fd-section-divider {
+    border: none;
+    height: 1px;
+    margin: 3rem 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.18),
+        transparent
+    );
+}
+
 
 
 
@@ -1054,17 +1232,109 @@ html, body {
     </div>
 </section>
 
+<!-- =========================
+     AKTUELLES / NEWS → FACEBOOK
+     ========================= -->
+<section class="fd-section fd-news-bridge">
+    <div class="container">
+
+        <div class="row align-items-center g-4">
+
+            <!-- LEFT: TEXT -->
+            <div class="col-lg-6">
+                <h2 class="fd-heading">Aktuelles & Einsätze</h2>
+                <div class="fd-underline"></div>
+
+                <p class="fd-intro-par">
+                    Ob Einsätze, Übungen, Veranstaltungen oder kurzfristige
+                    Informationen – unsere aktuellen Neuigkeiten veröffentlichen
+                    wir bewusst auf Facebook.
+                </p>
+
+                <p class="fd-intro-par">
+                    So erreichen wir unsere Gemeinde schnell, transparent
+                    und in Echtzeit – genau dort, wo Informationen
+                    am häufigsten abgerufen werden.
+                </p>
+
+                <a
+                    href="https://www.facebook.com/"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn-outline-light btn-lg mt-2"
+                >
+                    Zu unseren aktuellen Beiträgen
+                    <i class="bi bi-facebook ms-2"></i>
+                </a>
+            </div>
+
+            <!-- RIGHT: VISUAL TEASER -->
+            <div class="col-lg-6">
+                <div class="fd-news-panel">
+
+                    <div class="fd-news-item">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                        <div>
+                            <strong>Einsätze & Alarmierungen</strong>
+                            <span>zeitnah & transparent</span>
+                        </div>
+                    </div>
+
+                    <div class="fd-news-item">
+                        <i class="bi bi-people-fill"></i>
+                        <div>
+                            <strong>Übungen & Ausbildung</strong>
+                            <span>Einblicke in unsere Arbeit</span>
+                        </div>
+                    </div>
+
+                    <div class="fd-news-item">
+                        <i class="bi bi-calendar-event-fill"></i>
+                        <div>
+                            <strong>Veranstaltungen</strong>
+                            <span>Feuerwehrfest & Termine</span>
+                        </div>
+                    </div>
+
+                    <div class="fd-news-live">
+                        <span></span>
+                        Live auf Facebook
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
 
 <!-- =========================
-     FEUERWEHRFEST – JAHRESFIXPUNKT
+     FEUERWEHRFEST – JAHRESFIXPUNKT (HIGHLIGHT)
      ========================= -->
 <section class="fd-section fd-fest-anchor">
     <div class="container">
 
         <div class="row g-4 align-items-center">
 
-            <!-- TEXT -->
-            <div class="col-lg-7">
+            <!-- IMAGE (LEFT) -->
+            <div class="col-lg-5 order-lg-1 order-2">
+                <div class="fd-fest-anchor-img fd-fest-highlight">
+
+                    <!-- Highlight Ribbon -->
+                    <span class="fd-fest-ribbon">
+                        <i class="bi bi-music-note-beamed"></i>
+                        Feststimmung
+                    </span>
+
+                    <img src="img/zeltfest.jpg" alt="Feuerwehrfest Viehdorf">
+                </div>
+            </div>
+
+            <!-- TEXT (RIGHT) -->
+            <div class="col-lg-7 order-lg-2 order-1">
                 <div class="fd-fest-anchor-text">
 
                     <span class="fd-fest-anchor-tag">
@@ -1076,16 +1346,17 @@ html, body {
                     <div class="fd-underline"></div>
 
                     <p>
-                        Das Feuerwehrfest ist ein fester Bestandteil des
-                        Gemeindelebens in Viehdorf. Es verbindet Musik,
-                        Gemeinschaft und gemütliches Beisammensein
-                        für alle Generationen.
+                        Das Feuerwehrfest ist einer der wichtigsten
+                        Treffpunkte im Gemeindeleben von Viehdorf.
+                        Es vereint Musik, Gemeinschaft und echte
+                        Feststimmung für Jung und Alt.
                     </p>
 
                     <p>
-                        Alle Informationen zum aktuellen Jahr, Rückblicke
-                        sowie Eindrücke vergangener Feste finden Sie
-                        auf der eigenen Fest-Seite.
+                        Ob gemütliches Beisammensein, musikalische
+                        Highlights oder besondere Momente – das
+                        Feuerwehrfest schafft Erinnerungen, die
+                        bleiben.
                     </p>
 
                     <a href="pages/zeltfest.html" class="btn btn-outline-light mt-2">
@@ -1096,17 +1367,15 @@ html, body {
                 </div>
             </div>
 
-            <!-- IMAGE -->
-            <div class="col-lg-5">
-                <div class="fd-fest-anchor-img">
-                    <img src="img/zeltfest.jpg" alt="Feuerwehrfest Viehdorf">
-                </div>
-            </div>
-
         </div>
 
     </div>
 </section>
+
+<div class="container">
+    <hr class="fd-section-divider">
+</div>
+
 
 
 <!-- =========================
