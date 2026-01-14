@@ -458,6 +458,130 @@ html, body {
     transform: none !important;
 }
 
+/* =========================
+   FOOTER – VISUAL ALIGNMENT
+   ========================= */
+
+.footer {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.006),
+            rgba(0,0,0,0.04)
+        );
+    border-top: 1px solid var(--fd-border);
+    box-shadow: inset 0 12px 30px rgba(0,0,0,0.55);
+    font-size: 0.95rem;
+}
+
+/* Footer headings */
+.footer h5 {
+    font-family: var(--fd-title);
+    font-size: 1.05rem;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* subtle underline accent */
+.footer h5::after {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 3px;
+    margin-top: 0.45rem;
+    background: linear-gradient(90deg, var(--fd-yellow), var(--fd-red));
+    border-radius: 4px;
+}
+
+/* Footer text */
+.footer p,
+.footer small {
+    color: #cfcfcf;
+    line-height: 1.6;
+}
+
+/* Footer links */
+.footer a {
+    color: #cfcfcf;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer a:hover {
+    color: var(--fd-yellow);
+    transform: translateX(2px);
+}
+
+/* Navigation list spacing */
+.footer ul li {
+    margin-bottom: 0.45rem;
+}
+
+/* Social icons */
+.footer-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--fd-panel-light);
+    border: 1px solid var(--fd-border);
+    color: #ffffff;
+    font-size: 1.15rem;
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.footer-social:hover {
+    background: rgba(183,0,0,0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.55);
+    color: var(--fd-yellow);
+}
+
+/* Divider */
+.footer hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+    margin: 2rem 0 1.5rem;
+}
+
+/* Bottom copyright line */
+.footer small {
+    opacity: 0.85;
+}
+
+/* =========================
+   MOBILE REFINEMENT
+   ========================= */
+@media (max-width: 767.98px) {
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer h5::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-social {
+        margin: 0 0.35rem;
+    }
+}
+
+
 
 
     </style>
@@ -789,6 +913,198 @@ new Chart(ctx, {
             navbar.classList.add('navbar-large');
         }
     });
+
+
+
+
+
+
+    
+/* =========================================================
+   ÜBER-UNS — SCROLL & MOTION SYSTEM
+   (VISUALS UNTOUCHED)
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ---------------------------------
+       1. SCROLL REVEAL (SECTION FLOW)
+       --------------------------------- */
+    const revealTargets = document.querySelectorAll(`
+        .fd-section,
+        .fd-team-panel,
+        .fd-team-img-wrap,
+        .fd-lead-card,
+        .fd-value-tile,
+        .fd-timeline-item,
+        .fd-timeline-img-wrap,
+        .fd-stat-box,
+        .fd-cta
+    `);
+
+    revealTargets.forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(28px)";
+        el.style.transition = "opacity 0.85s ease, transform 0.85s ease";
+    });
+
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+
+
+    /* ---------------------------------
+       2. STAGGERED LEADERSHIP REVEAL
+       --------------------------------- */
+    const leadCards = document.querySelectorAll(".fd-lead-card");
+
+    leadCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 120}ms`;
+    });
+
+
+    /* ---------------------------------
+       3. TIMELINE PROGRESSION FEEL
+       --------------------------------- */
+    const timelineDots = document.querySelectorAll(".fd-timeline-dot");
+
+    timelineDots.forEach(dot => {
+        dot.style.transform = "scale(0.6)";
+        dot.style.opacity = "0";
+        dot.style.transition = "transform 0.6s ease, opacity 0.6s ease";
+    });
+
+    const timelineObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const dot = entry.target.querySelector(".fd-timeline-dot");
+                if (dot) {
+                    dot.style.transform = "scale(1)";
+                    dot.style.opacity = "1";
+                }
+                timelineObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll(".fd-timeline-item")
+        .forEach(item => timelineObserver.observe(item));
+
+
+    /* ---------------------------------
+       4. STAT COUNT-UP (BOTTOM STATS)
+       --------------------------------- */
+    const statNumbers = document.querySelectorAll(".fd-stat-number");
+
+    const animateNumber = (el) => {
+        const raw = el.innerText;
+        const target = parseInt(raw.replace(/\D/g, ""));
+        if (isNaN(target)) return;
+
+        let start = 0;
+        const duration = 1200;
+        const startTime = performance.now();
+
+        const tick = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            start = Math.floor(progress * target);
+            el.innerText = raw.includes("+") ? start + "+" : start;
+            if (progress < 1) requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+    };
+
+    const statsObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateNumber(entry.target);
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.6 });
+
+    statNumbers.forEach(num => statsObserver.observe(num));
+
+
+    /* ---------------------------------
+       5. IMAGE PARALLAX (VERY SUBTLE)
+       --------------------------------- */
+    const parallaxImages = document.querySelectorAll(
+        ".fd-team-img-wrap img, .fd-timeline-img-wrap img"
+    );
+
+    window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        parallaxImages.forEach(img => {
+            const rect = img.getBoundingClientRect();
+            if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                const offset = (rect.top - window.innerHeight / 2) * 0.05;
+                img.style.transform = `translateY(${offset}px) scale(1.02)`;
+            }
+        });
+    });
+
+
+    /* ---------------------------------
+       6. SMOOTH INTERNAL ANCHORS
+       --------------------------------- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", e => {
+            const target = document.querySelector(anchor.getAttribute("href"));
+            if (!target) return;
+
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    });
+
+
+    /* ---------------------------------
+       7. CHART FADE-IN SYNC
+       --------------------------------- */
+    const chartCanvas = document.getElementById("einsatzChart");
+    if (chartCanvas) {
+        chartCanvas.style.opacity = "0";
+        chartCanvas.style.transition = "opacity 1s ease";
+
+        const chartObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    chartCanvas.style.opacity = "1";
+                    chartObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.4 });
+
+        chartObserver.observe(chartCanvas);
+    }
+
+
+    /* ---------------------------------
+       8. SCROLL DIRECTION STATE (FUTURE)
+       --------------------------------- */
+    let lastY = window.scrollY;
+    window.addEventListener("scroll", () => {
+        document.body.dataset.scroll =
+            window.scrollY > lastY ? "down" : "up";
+        lastY = window.scrollY;
+    });
+
+});
+
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

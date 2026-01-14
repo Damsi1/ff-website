@@ -545,6 +545,130 @@ html, body {
     }
 }
 
+/* =========================
+   FOOTER – VISUAL ALIGNMENT
+   ========================= */
+
+.footer {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.006),
+            rgba(0,0,0,0.04)
+        );
+    border-top: 1px solid var(--fd-border);
+    box-shadow: inset 0 12px 30px rgba(0,0,0,0.55);
+    font-size: 0.95rem;
+}
+
+/* Footer headings */
+.footer h5 {
+    font-family: var(--fd-title);
+    font-size: 1.05rem;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* subtle underline accent */
+.footer h5::after {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 3px;
+    margin-top: 0.45rem;
+    background: linear-gradient(90deg, var(--fd-yellow), var(--fd-red));
+    border-radius: 4px;
+}
+
+/* Footer text */
+.footer p,
+.footer small {
+    color: #cfcfcf;
+    line-height: 1.6;
+}
+
+/* Footer links */
+.footer a {
+    color: #cfcfcf;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer a:hover {
+    color: var(--fd-yellow);
+    transform: translateX(2px);
+}
+
+/* Navigation list spacing */
+.footer ul li {
+    margin-bottom: 0.45rem;
+}
+
+/* Social icons */
+.footer-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--fd-panel-light);
+    border: 1px solid var(--fd-border);
+    color: #ffffff;
+    font-size: 1.15rem;
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.footer-social:hover {
+    background: rgba(183,0,0,0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.55);
+    color: var(--fd-yellow);
+}
+
+/* Divider */
+.footer hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+    margin: 2rem 0 1.5rem;
+}
+
+/* Bottom copyright line */
+.footer small {
+    opacity: 0.85;
+}
+
+/* =========================
+   MOBILE REFINEMENT
+   ========================= */
+@media (max-width: 767.98px) {
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer h5::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-social {
+        margin: 0 0.35rem;
+    }
+}
+
+
 
     </style>
 </head>
@@ -895,6 +1019,127 @@ html, body {
             navbar.classList.add('navbar-large');
         }
     });
+
+
+
+   
+/* =========================================================
+   SCROLL & MOTION ENHANCEMENTS
+   (NO CSS / NO HTML CHANGES)
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ---------------------------------
+       1. SCROLL REVEAL (SECTIONS)
+       --------------------------------- */
+    const revealElements = document.querySelectorAll(
+        ".fd-section, .fd-gear-card, .fd-contact, .parallax-panel"
+    );
+
+    revealElements.forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(28px)";
+        el.style.transition = "opacity 0.9s ease, transform 0.9s ease";
+    });
+
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+
+    /* ---------------------------------
+       2. COUNT-UP NUMBERS (FACT BOXES)
+       --------------------------------- */
+    const counters = document.querySelectorAll(".fd-intro-fact .num");
+
+    const countUp = (el) => {
+        const target = parseInt(el.innerText.replace(/\D/g, ""));
+        if (isNaN(target)) return;
+
+        let current = 0;
+        const duration = 1200;
+        const startTime = performance.now();
+
+        const update = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            current = Math.floor(progress * target);
+            el.innerText = el.innerText.includes("+") ? current + "+" : current;
+            if (progress < 1) requestAnimationFrame(update);
+        };
+
+        requestAnimationFrame(update);
+    };
+
+    const counterObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                countUp(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.6 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+
+    /* ---------------------------------
+       3. PARALLAX DEPTH (VERY SUBTLE)
+       --------------------------------- */
+    const parallax = document.querySelector(".parallax-section");
+
+    if (parallax) {
+        window.addEventListener("scroll", () => {
+            const rect = parallax.getBoundingClientRect();
+            if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                const offset = rect.top * -0.12;
+                parallax.style.backgroundPosition = `center ${offset}px`;
+            }
+        });
+    }
+
+
+    /* ---------------------------------
+       4. SMOOTH ANCHOR SCROLLING
+       --------------------------------- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", e => {
+            const target = document.querySelector(anchor.getAttribute("href"));
+            if (!target) return;
+
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    });
+
+
+    /* ---------------------------------
+       5. SCROLL DIRECTION AWARENESS
+       (for future enhancements)
+       --------------------------------- */
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener("scroll", () => {
+        const currentY = window.scrollY;
+        document.body.dataset.scroll =
+            currentY > lastScrollY ? "down" : "up";
+        lastScrollY = currentY;
+    });
+
+});
+
+
 </script>
 
 </body>

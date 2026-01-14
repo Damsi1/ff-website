@@ -306,6 +306,130 @@ html, body {
     transform: none !important;
 }
 
+/* =========================
+   FOOTER – VISUAL ALIGNMENT
+   ========================= */
+
+.footer {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.006),
+            rgba(0,0,0,0.04)
+        );
+    border-top: 1px solid var(--fd-border);
+    box-shadow: inset 0 12px 30px rgba(0,0,0,0.55);
+    font-size: 0.95rem;
+}
+
+/* Footer headings */
+.footer h5 {
+    font-family: var(--fd-title);
+    font-size: 1.05rem;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* subtle underline accent */
+.footer h5::after {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 3px;
+    margin-top: 0.45rem;
+    background: linear-gradient(90deg, var(--fd-yellow), var(--fd-red));
+    border-radius: 4px;
+}
+
+/* Footer text */
+.footer p,
+.footer small {
+    color: #cfcfcf;
+    line-height: 1.6;
+}
+
+/* Footer links */
+.footer a {
+    color: #cfcfcf;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer a:hover {
+    color: var(--fd-yellow);
+    transform: translateX(2px);
+}
+
+/* Navigation list spacing */
+.footer ul li {
+    margin-bottom: 0.45rem;
+}
+
+/* Social icons */
+.footer-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--fd-panel-light);
+    border: 1px solid var(--fd-border);
+    color: #ffffff;
+    font-size: 1.15rem;
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.footer-social:hover {
+    background: rgba(183,0,0,0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.55);
+    color: var(--fd-yellow);
+}
+
+/* Divider */
+.footer hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+    margin: 2rem 0 1.5rem;
+}
+
+/* Bottom copyright line */
+.footer small {
+    opacity: 0.85;
+}
+
+/* =========================
+   MOBILE REFINEMENT
+   ========================= */
+@media (max-width: 767.98px) {
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer h5::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-social {
+        margin: 0 0.35rem;
+    }
+}
+
+
 
     </style>
 </head>
@@ -524,6 +648,146 @@ html, body {
             navbar.classList.add('navbar-large');
         }
     });
+
+
+
+   
+/* =========================================================
+   FEUERWEHRJUGEND — SCROLL & MOTION SYSTEM
+   (VISUALS UNTOUCHED)
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ---------------------------------
+       1. SCROLL REVEAL (SOFT & PLAYFUL)
+       --------------------------------- */
+    const revealEls = document.querySelectorAll(`
+        .fd-section,
+        .fd-youth-icon,
+        .fd-act-panel,
+        .fd-activities img,
+        .fd-quote-card,
+        .fd-cta
+    `);
+
+    revealEls.forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(26px)";
+        el.style.transition = "opacity 0.85s ease, transform 0.85s ease";
+    });
+
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.18 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+
+    /* ---------------------------------
+       2. WHY-JOIN ICON STAGGER
+       --------------------------------- */
+    document.querySelectorAll(".fd-youth-icon").forEach((icon, i) => {
+        icon.style.transitionDelay = `${i * 120}ms`;
+    });
+
+
+    /* ---------------------------------
+       3. ACTIVITY PANEL MIRROR FLOW
+       --------------------------------- */
+    document.querySelectorAll(".fd-act-panel").forEach((panel, i) => {
+        panel.style.transitionDelay = `${i * 140}ms`;
+    });
+
+
+    /* ---------------------------------
+       4. IMAGE PARALLAX (VERY SUBTLE)
+       Youth-safe (no motion sickness)
+       --------------------------------- */
+    const parallaxImgs = document.querySelectorAll(
+        ".fd-activities img"
+    );
+
+    window.addEventListener("scroll", () => {
+        const vh = window.innerHeight;
+        parallaxImgs.forEach(img => {
+            const r = img.getBoundingClientRect();
+            if (r.bottom > 0 && r.top < vh) {
+                const offset = (r.top - vh / 2) * 0.035;
+                img.style.transform = `translateY(${offset}px) scale(1.02)`;
+            }
+        });
+    });
+
+
+    /* ---------------------------------
+       5. QUOTE CARDS CASCADE
+       --------------------------------- */
+    document.querySelectorAll(".fd-quote-card").forEach((card, i) => {
+        card.style.transitionDelay = `${i * 120}ms`;
+    });
+
+
+    /* ---------------------------------
+       6. CTA LANDING EMPHASIS
+       --------------------------------- */
+    const cta = document.querySelector(".fd-cta");
+    if (cta) {
+        cta.style.opacity = "0";
+        cta.style.transform = "scale(0.96)";
+
+        const ctaObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    cta.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+                    cta.style.opacity = "1";
+                    cta.style.transform = "scale(1)";
+                    ctaObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.35 });
+
+        ctaObserver.observe(cta);
+    }
+
+
+    /* ---------------------------------
+       7. SMOOTH INTERNAL ANCHORS
+       --------------------------------- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", e => {
+            const target = document.querySelector(anchor.getAttribute("href"));
+            if (!target) return;
+
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    });
+
+
+    /* ---------------------------------
+       8. SCROLL DIRECTION STATE
+       (FUTURE-READY)
+       --------------------------------- */
+    let lastY = window.scrollY;
+    window.addEventListener("scroll", () => {
+        document.body.dataset.scroll =
+            window.scrollY > lastY ? "down" : "up";
+        lastY = window.scrollY;
+    });
+
+});
+
+
 </script>
 
 </body>

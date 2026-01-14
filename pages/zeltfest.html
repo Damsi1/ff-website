@@ -731,6 +731,128 @@
     }
 }
 
+/* =========================
+   FOOTER – VISUAL ALIGNMENT
+   ========================= */
+
+.footer {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.006),
+            rgba(0,0,0,0.04)
+        );
+    border-top: 1px solid var(--fd-border);
+    box-shadow: inset 0 12px 30px rgba(0,0,0,0.55);
+    font-size: 0.95rem;
+}
+
+/* Footer headings */
+.footer h5 {
+    font-family: var(--fd-title);
+    font-size: 1.05rem;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* subtle underline accent */
+.footer h5::after {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 3px;
+    margin-top: 0.45rem;
+    background: linear-gradient(90deg, var(--fd-yellow), var(--fd-red));
+    border-radius: 4px;
+}
+
+/* Footer text */
+.footer p,
+.footer small {
+    color: #cfcfcf;
+    line-height: 1.6;
+}
+
+/* Footer links */
+.footer a {
+    color: #cfcfcf;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer a:hover {
+    color: var(--fd-yellow);
+    transform: translateX(2px);
+}
+
+/* Navigation list spacing */
+.footer ul li {
+    margin-bottom: 0.45rem;
+}
+
+/* Social icons */
+.footer-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--fd-panel-light);
+    border: 1px solid var(--fd-border);
+    color: #ffffff;
+    font-size: 1.15rem;
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.footer-social:hover {
+    background: rgba(183,0,0,0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.55);
+    color: var(--fd-yellow);
+}
+
+/* Divider */
+.footer hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+    margin: 2rem 0 1.5rem;
+}
+
+/* Bottom copyright line */
+.footer small {
+    opacity: 0.85;
+}
+
+/* =========================
+   MOBILE REFINEMENT
+   ========================= */
+@media (max-width: 767.98px) {
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer h5::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-social {
+        margin: 0 0.35rem;
+    }
+}
 
 
 
@@ -1051,6 +1173,177 @@ new Chart(ctx, {
             navbar.classList.add('navbar-large');
         }
     });
+
+    
+/* =========================================================
+   FEUERWEHRFEST — SCROLL & MOTION SYSTEM
+   (VISUALS UNTOUCHED)
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ---------------------------------
+       1. SCROLL REVEAL (SOLID & CINEMATIC)
+       --------------------------------- */
+    const revealEls = document.querySelectorAll(`
+        .fd-section,
+        .fd-panel,
+        .fd-highlight,
+        .fd-carousel,
+        .fd-year-locked,
+        .fd-img-card,
+        .fd-timeline-item,
+        .fd-cta
+    `);
+
+    revealEls.forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "opacity 0.9s ease, transform 0.9s ease";
+    });
+
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+
+    /* ---------------------------------
+       2. HIGHLIGHTS STAGGER
+       --------------------------------- */
+    document.querySelectorAll(".fd-highlight").forEach((box, i) => {
+        box.style.transitionDelay = `${i * 140}ms`;
+    });
+
+
+    /* ---------------------------------
+       3. CAROUSEL DEPTH PARALLAX
+       --------------------------------- */
+    const carouselImgs = document.querySelectorAll(".fd-carousel img");
+
+    window.addEventListener("scroll", () => {
+        const vh = window.innerHeight;
+        carouselImgs.forEach(img => {
+            const r = img.getBoundingClientRect();
+            if (r.bottom > 0 && r.top < vh) {
+                const offset = (r.top - vh / 2) * 0.04;
+                img.style.transform = `translateY(${offset}px) scale(1.03)`;
+            }
+        });
+    });
+
+
+    /* ---------------------------------
+       4. YEAR-LOCKED EMPHASIS
+       --------------------------------- */
+    const locked = document.querySelector(".fd-year-locked");
+    if (locked) {
+        locked.style.opacity = "0";
+        locked.style.transform = "scale(0.96)";
+
+        const lockObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    locked.style.transition =
+                        "opacity 0.9s ease, transform 0.9s ease";
+                    locked.style.opacity = "1";
+                    locked.style.transform = "scale(1)";
+                    lockObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.35 });
+
+        lockObserver.observe(locked);
+    }
+
+
+    /* ---------------------------------
+       5. TIMELINE — YEAR BY YEAR FLOW
+       --------------------------------- */
+    document.querySelectorAll(".fd-timeline-item").forEach((item, i) => {
+        item.style.transitionDelay = `${i * 160}ms`;
+    });
+
+
+    /* ---------------------------------
+       6. TIMELINE IMAGE PARALLAX
+       --------------------------------- */
+    const timelineImgs = document.querySelectorAll(".fd-timeline-img img");
+
+    window.addEventListener("scroll", () => {
+        const vh = window.innerHeight;
+        timelineImgs.forEach(img => {
+            const r = img.getBoundingClientRect();
+            if (r.bottom > 0 && r.top < vh) {
+                const offset = (r.top - vh / 2) * 0.035;
+                img.style.transform = `translateY(${offset}px) scale(1.04)`;
+            }
+        });
+    });
+
+
+    /* ---------------------------------
+       7. CTA LANDING (FINAL MOMENT)
+       --------------------------------- */
+    const cta = document.querySelector(".fd-cta");
+    if (cta) {
+        cta.style.opacity = "0";
+        cta.style.transform = "translateY(22px) scale(0.97)";
+
+        const ctaObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    cta.style.transition =
+                        "opacity 0.85s ease, transform 0.85s ease";
+                    cta.style.opacity = "1";
+                    cta.style.transform = "translateY(0) scale(1)";
+                    ctaObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.35 });
+
+        ctaObserver.observe(cta);
+    }
+
+
+    /* ---------------------------------
+       8. SMOOTH INTERNAL ANCHORS
+       --------------------------------- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", e => {
+            const target = document.querySelector(anchor.getAttribute("href"));
+            if (!target) return;
+
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    });
+
+
+    /* ---------------------------------
+       9. SCROLL DIRECTION STATE
+       (SYSTEM CONSISTENCY)
+       --------------------------------- */
+    let lastY = window.scrollY;
+    window.addEventListener("scroll", () => {
+        document.body.dataset.scroll =
+            window.scrollY > lastY ? "down" : "up";
+        lastY = window.scrollY;
+    });
+
+});
+
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
