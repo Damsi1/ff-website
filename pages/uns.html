@@ -839,8 +839,8 @@ html, body {
 <div class="row mt-4 g-3">
     <div class="col-md-3 col-6">
         <div class="fd-stat-box">
-            <div class="fd-stat-number">60</div>
-            <div class="fd-stat-label">Gesamteinsätze<br>2024</div>
+            <div class="fd-stat-number">56</div>
+            <div class="fd-stat-label">Gesamteinsätze<br>2025</div>
         </div>
     </div>
 
@@ -853,7 +853,7 @@ html, body {
 
     <div class="col-md-3 col-6">
         <div class="fd-stat-box">
-            <div class="fd-stat-number">54</div>
+            <div class="fd-stat-number">50</div>
             <div class="fd-stat-label">Technische Einsätze</div>
         </div>
     </div>
@@ -941,10 +941,10 @@ function createEinsatzChart() {
     einsatzChartInstance = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['2019','2020','2021','2022','2023','2024'],
+            labels: ['2019','2020','2021','2022','2023','2024','2025'],
             datasets: [{
                 label: 'Einsätze',
-                data: [72,80,77,95,88,101],
+                data: [45,40,44,51,55,60,56],
                 borderColor: '#b70000',
                 backgroundColor: 'rgba(183,0,0,0.15)',
                 tension: 0.35,
