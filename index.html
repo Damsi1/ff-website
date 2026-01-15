@@ -1002,7 +1002,151 @@ html, body {
 }
 
 
+/* ====================
+   FEUERWEHRJUGEND – FEATURED PARALLAX
+   ==================== */
 
+.parallax-section {
+    position: relative;
+    background-image: url('img/fj.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 4.5rem 0;
+}
+
+/* Darken image WITHOUT greying it out */
+.parallax-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.65)
+        );
+    z-index: 0;
+}
+
+/* Content panel = real FD panel */
+.parallax-panel {
+    position: relative;
+    z-index: 1;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.02),
+        rgba(0,0,0,0.12)
+    );
+    border: 1px solid var(--fd-border);
+    border-radius: var(--fd-radius);
+    padding: 2.6rem 2.4rem;
+
+    box-shadow:
+        0 18px 44px rgba(0,0,0,0.65);
+}
+
+.parallax-section .container {
+    max-width: 1100px;
+}
+
+/* ====================
+   FEUERWEHRJUGEND – EDITORIAL PARALLAX
+   ==================== */
+
+.fd-fj-feature {
+    position: relative;
+}
+
+/* Tag above heading */
+.fd-fj-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--fd-yellow);
+}
+
+/* Left panel – heavier than normal */
+.fd-fj-feature .fd-panel {
+    padding: 2.8rem;
+    box-shadow:
+        0 22px 48px rgba(0,0,0,0.65);
+}
+
+/* Right accent column */
+.fd-fj-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.fd-fj-stat {
+    background: var(--fd-panel-light);
+    border: 1px solid var(--fd-border);
+    border-radius: var(--fd-radius);
+    padding: 1.1rem 1.2rem;
+}
+
+.fd-fj-stat strong {
+    display: block;
+    font-family: var(--fd-title);
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.fd-fj-stat span {
+    font-size: 0.9rem;
+    color: #cfcfcf;
+}
+
+/* Desktop breathing room */
+@media (min-width: 992px) {
+    .fd-fj-feature {
+        padding: 5rem 0;
+    }
+}
+
+/* Mobile – stack cleanly */
+@media (max-width: 767.98px) {
+    .fd-fj-aside {
+        margin-top: 1.5rem;
+    }
+}
+
+@media (hover: hover) {
+    .fd-fj-stat:hover {
+        transform: translateY(-4px);
+        transition: transform 0.3s ease;
+    }
+}
+
+.num-composite {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.25rem;
+}
+
+.num-composite .num {
+    font-family: var(--fd-title);
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--fd-yellow);
+    min-width: 1.6ch; /* verhindert Springen */
+    text-align: center;
+}
+
+.num-composite .slash {
+    font-family: var(--fd-title);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #cfcfcf;
+    opacity: 0.8;
+}
 
 
     </style>
@@ -1052,23 +1196,25 @@ html, body {
     <div class="container">
 
         <!-- Heading -->
-        <h2 class="fd-heading text-center">Bereit. Ehrenamtlich. Für unsere Gemeinde.</h2>
+        <h2 class="fd-heading text-center">
+            Bereit. Ehrenamtlich. Für unsere Gemeinde.
+        </h2>
         <div class="fd-underline mx-auto"></div>
 
         <!-- Intro Text -->
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <p class="fd-intro-par text-center">
-                    365 Tage im Jahr – rund um die Uhr – stehen die Mitglieder der 
-                    Freiwilligen Feuerwehr Viehdorf bereit, um im Ernstfall schnell, 
-                    professionell und entschlossen zu handeln. Gemeinsam sorgen wir 
+                    365 Tage im Jahr – rund um die Uhr – stehen die Mitglieder der
+                    Freiwilligen Feuerwehr Viehdorf bereit, um im Ernstfall schnell,
+                    professionell und entschlossen zu handeln. Gemeinsam sorgen wir
                     für Sicherheit, Hilfeleistung und starken Zusammenhalt in unserer Gemeinde.
                 </p>
 
                 <p class="fd-intro-par text-center">
-                    Moderne Ausrüstung, kontinuierliche Ausbildung und jahrzehntelange 
-                    Erfahrung machen uns zu einer verlässlichen Kraft im Einsatz. 
-                    Feuerwehr ist mehr als ein Hobby – es ist Verantwortung, Teamgeist 
+                    Moderne Ausrüstung, kontinuierliche Ausbildung und jahrzehntelange
+                    Erfahrung machen uns zu einer verlässlichen Kraft im Einsatz.
+                    Feuerwehr ist mehr als ein Hobby – es ist Verantwortung, Teamgeist
                     und die Bereitschaft zu helfen, wenn Hilfe gebraucht wird.
                 </p>
             </div>
@@ -1076,43 +1222,54 @@ html, body {
 
         <!-- Key Facts -->
         <div class="row justify-content-center mt-4 g-3">
+
+            <!-- Mitglieder -->
             <div class="col-6 col-md-3">
                 <div class="fd-intro-fact text-center">
-                    <div class="num">100+</div>
+                    <div class="num-composite">
+                        <span class="num" data-target="120">0</span>
+                        <span class="slash">+</span>
+                    </div>
                     <div class="lbl">Mitglieder</div>
                 </div>
             </div>
 
+            <!-- 24 / 7 -->
             <div class="col-6 col-md-3">
                 <div class="fd-intro-fact text-center">
-                    <div class="num">24/7</div>
+                    <div class="num-composite">
+                        <span class="num" data-target="24">0</span>
+                        <span class="slash">/</span>
+                        <span class="num" data-target="7">0</span>
+                    </div>
                     <div class="lbl">einsatzbereit</div>
                 </div>
             </div>
 
+            <!-- Tage im Jahr -->
             <div class="col-6 col-md-3">
                 <div class="fd-intro-fact text-center">
-                    <div class="num">365</div>
+                    <div class="num" data-target="365">0</div>
                     <div class="lbl">Tage im Jahr</div>
                 </div>
             </div>
 
+            <!-- Jahre Feuerwehr -->
             <div class="col-6 col-md-3">
                 <div class="fd-intro-fact text-center">
-                    <div class="num">101</div>
-                    <div class="lbl">Einsätze in 2024</div>
+                    <div class="num-composite">
+                        <span class="num" data-target="130">0</span>
+                        <span class="slash">+</span>
+                    </div>
+                    <div class="lbl">Jahre Feuerwehr</div>
                 </div>
             </div>
-        </div>
 
-        <!-- CTA Buttons -->
-        <div class="text-center mt-4">
-            
-            
         </div>
 
     </div>
 </section>
+
 
 
 <!-- =========================
@@ -1372,11 +1529,63 @@ html, body {
     </div>
 </section>
 
+
+
+
+<section class="parallax-section fd-fj-feature d-flex align-items-center">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+
+            <!-- LEFT: Editorial panel -->
+            <div class="col-lg-7">
+                <div class="parallax-panel fd-panel">
+                    <span class="fd-fj-tag">
+                        <i class="bi bi-people-fill"></i>
+                        Feuerwehrjugend
+                    </span>
+
+                    <h2 class="fd-heading mt-2">Gemeinschaft. Technik. Zukunft.</h2>
+                    <div class="fd-underline"></div>
+
+                    <p class="fd-intro-par">
+                        Unsere Feuerwehrjugend verbindet Kameradschaft,
+                        Verantwortung und Action. Spielerisch lernen,
+                        gemeinsam wachsen und vorbereitet sein
+                        auf den aktiven Feuerwehrdienst.
+                    </p>
+
+                    <a href="pages/fj.html" class="btn btn-outline-light btn-lg mt-2">
+                        Mehr zur Feuerwehrjugend
+                        <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT: Accent / stats -->
+            <div class="col-lg-5">
+                <div class="fd-fj-aside">
+                    <div class="fd-fj-stat">
+                        <strong>Ab 10 Jahren</strong>
+                        <span>Jugendmitgliedschaft</span>
+                    </div>
+                    <div class="fd-fj-stat">
+                        <strong>Übungen & Bewerbe</strong>
+                        <span>Spielerisch & praxisnah</span>
+                    </div>
+                    <div class="fd-fj-stat">
+                        <strong>Gemeinschaft</strong>
+                        <span>Freunde fürs Leben</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <div class="container">
     <hr class="fd-section-divider">
 </div>
-
-
 
 <!-- =========================
      AUSRÜSTUNG / LEISTUNGEN
@@ -1386,7 +1595,7 @@ html, body {
         <div class="row align-items-center">
             <div class="col-12 text-center">
                 <h2 class="fd-heading">Unsere Ausrüstung</h2>
-                <div class="fd-underline"></div>
+                <div class="fd-underline mx-auto"></div>
             </div>
         </div>
 
@@ -1422,23 +1631,9 @@ html, body {
     </div>
 </section>
 
-<!-- =========================
-     FEUERWEHRJUGEND (PARALLAX)
-     ========================= -->
-<section class="parallax-section d-flex align-items-center">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-9 parallax-panel">
-                <h2 class="fd-heading text-center">Feuerwehrjugend</h2>
-                
-                <p class="lead text-center" style="color:#e8e8e8">Unsere Feuerwehrjugend bereitet junge Menschen spielerisch und praxisnah auf die Aufgaben im Feuerwehrdienst vor.</p>
-                <div class="text-center mt-3">
-                    <a href="pages/fj.html" class="btn btn-outline-light btn-lg">Mehr erfahren</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<div class="container">
+    <hr class="fd-section-divider">
+</div>
 
 <!-- =========================
      KONTAKT / CTA
@@ -1550,36 +1745,35 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ---------------------------------
        2. COUNT-UP NUMBERS (FACT BOXES)
        --------------------------------- */
-    const counters = document.querySelectorAll(".fd-intro-fact .num");
+    const counters = document.querySelectorAll(".fd-intro-fact .num[data-target]");
 
-    const countUp = (el) => {
-        const target = parseInt(el.innerText.replace(/\D/g, ""));
-        if (isNaN(target)) return;
+const countUp = (el) => {
+    const target = parseInt(el.dataset.target, 10);
+    let current = 0;
+    const duration = 1200;
+    const start = performance.now();
 
-        let current = 0;
-        const duration = 1200;
-        const startTime = performance.now();
-
-        const update = (now) => {
-            const progress = Math.min((now - startTime) / duration, 1);
-            current = Math.floor(progress * target);
-            el.innerText = el.innerText.includes("+") ? current + "+" : current;
-            if (progress < 1) requestAnimationFrame(update);
-        };
-
-        requestAnimationFrame(update);
+    const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        current = Math.floor(progress * target);
+        el.textContent = current;
+        if (progress < 1) requestAnimationFrame(tick);
     };
 
-    const counterObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                countUp(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.6 });
+    requestAnimationFrame(tick);
+};
 
-    counters.forEach(counter => counterObserver.observe(counter));
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            countUp(entry.target);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.6 });
+
+counters.forEach(el => observer.observe(el));
+
 
 
     /* ---------------------------------
