@@ -594,6 +594,25 @@ html, body {
     filter: drop-shadow(0 0 4px rgba(213,224,0,0.6));
 }
 
+/* CENTER & CONTAIN CHART */
+.fd-chart-wrap {
+    height: 300px;
+    max-width: 720px;
+    margin: 0 auto;              /* horizontal center */
+    display: flex;
+    align-items: center;          /* vertical center */
+    justify-content: center;
+}
+
+.fd-stat-label {
+    min-height: 3.2em;   /* forces two-line height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
 
     </style>
 </head>
@@ -683,7 +702,7 @@ html, body {
             <div class="col-md-4">
                 <div class="fd-lead-card">
                     <div class="fd-lead-avatar"><img src="../img/user.jpeg"></div>
-                    <div class="fd-lead-name">Wolfgang Schweighofer</div>
+                    <div class="fd-lead-name">Julian Zach</div>
                     <div class="fd-lead-role">Kommandant</div>
                 </div>
             </div>
@@ -699,7 +718,7 @@ html, body {
             <div class="col-md-4">
                 <div class="fd-lead-card">
                     <div class="fd-lead-avatar"><img src="../img/user.jpeg"></div>
-                    <div class="fd-lead-name">Erich Klem</div>
+                    <div class="fd-lead-name">Harald Kronberger</div>
                     <div class="fd-lead-role">Leitung Verwaltungsdienst</div>
                 </div>
             </div>
@@ -812,24 +831,43 @@ html, body {
             <h2 class="fd-heading">Einsatzstatistik</h2>
             <div class="fd-underline"></div>
 
-            <div style="height:300px;">
-                <canvas id="einsatzChart"></canvas>
-            </div>
+            <div class="fd-chart-wrap">
+    <canvas id="einsatzChart"></canvas>
+</div>
 
-            <div class="row mt-4 g-3">
-                <div class="col-md-3 col-6">
-                    <div class="fd-stat-box"><div class="fd-stat-number">101</div>Einsätze 2024</div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="fd-stat-box"><div class="fd-stat-number">34</div>Brandeinsätze</div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="fd-stat-box"><div class="fd-stat-number">53</div>Technische Hilfe</div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="fd-stat-box"><div class="fd-stat-number">100+</div>Aktive Mitglieder</div>
-                </div>
-            </div>
+
+<div class="row mt-4 g-3">
+    <div class="col-md-3 col-6">
+        <div class="fd-stat-box">
+            <div class="fd-stat-number">60</div>
+            <div class="fd-stat-label">Gesamteinsätze<br>2024</div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-6">
+        <div class="fd-stat-box">
+            <div class="fd-stat-number">6</div>
+            <div class="fd-stat-label">Brandeinsätze</div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-6">
+        <div class="fd-stat-box">
+            <div class="fd-stat-number">54</div>
+            <div class="fd-stat-label">Technische Einsätze</div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-6">
+        <div class="fd-stat-box">
+            <div class="fd-stat-number">4</div>
+            <div class="fd-stat-label">Ø Einsätze<br>pro Monat</div>
+        </div>
+    </div>
+</div>
+
+
+
 
         </div>
     </div>
@@ -894,31 +932,77 @@ html, body {
 <!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-const ctx = document.getElementById('einsatzChart');
-new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['2019','2020','2021','2022','2023','2024'],
-        datasets: [{
-            label: 'Einsätze',
-            data: [72,80,77,95,88,101],
-            borderColor: '#b70000',
-            backgroundColor: 'rgba(183,0,0,0.15)',
-            tension: 0.25,
-            borderWidth: 3,
-            pointBackgroundColor: '#d5e000',
-            pointRadius: 5,
-            pointHoverRadius: 7
-        }]
-    },
-    options: {
-        plugins: { legend: { labels: { color:'#fff' } } },
-        scales: {
-            x: { ticks:{ color:'#ddd' }, grid:{ color:'rgba(255,255,255,0.05)' }},
-            y: { ticks:{ color:'#ddd' }, grid:{ color:'rgba(255,255,255,0.05)' }}
+let einsatzChartInstance = null;
+
+function createEinsatzChart() {
+    const ctx = document.getElementById('einsatzChart');
+    if (!ctx || einsatzChartInstance) return;
+
+    einsatzChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['2019','2020','2021','2022','2023','2024'],
+            datasets: [{
+                label: 'Einsätze',
+                data: [72,80,77,95,88,101],
+                borderColor: '#b70000',
+                backgroundColor: 'rgba(183,0,0,0.15)',
+                tension: 0.35,
+                borderWidth: 3,
+                pointBackgroundColor: '#d5e000',
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            animation: {
+                duration: 1400,
+                easing: 'easeOutQuart'
+            },
+
+            plugins: {
+                legend: {
+                    labels: { color: '#fff' }
+                }
+            },
+
+            scales: {
+                x: {
+                    ticks: { color:'#ddd' },
+                    grid: { color:'rgba(255,255,255,0.05)' }
+                },
+                y: {
+                    ticks: { color:'#ddd' },
+                    grid: { color:'rgba(255,255,255,0.05)' }
+                }
+            }
         }
-    }
+    });
+}
+
+/* CREATE CHART ON SCROLL INTO VIEW */
+document.addEventListener("DOMContentLoaded", () => {
+    const chartCanvas = document.getElementById("einsatzChart");
+
+    const chartObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                createEinsatzChart();
+                chartObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.4 });
+
+    chartObserver.observe(chartCanvas);
 });
+</script>
+
+<script>
+
 
  // Keep existing navbar shrink behavior (unchanged)
     window.addEventListener('scroll', function () {
