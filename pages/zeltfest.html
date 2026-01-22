@@ -963,6 +963,49 @@
     transform: scale(1.4);
 }
 
+/* TIMELINE IMAGE – HARD BLACK FRAME RESTORED */
+/* =========================
+   TIMELINE IMAGE – TRUE BLACK FRAME
+   ========================= */
+
+.fd-timeline-img {
+    position: relative;
+    height: 200px;
+    margin-bottom: 1rem;
+
+    /* THE FRAME */
+    padding: 10px;              /* frame thickness */
+    background: #000;           /* pure black frame */
+    border-radius: 12px;
+
+    /* subtle lift, not part of frame */
+    box-shadow: 0 14px 30px rgba(0,0,0,0.65);
+
+    overflow: hidden;
+}
+
+
+.fd-timeline-img .carousel-inner,
+.fd-timeline-img .carousel-item {
+    height: 100%;
+}
+
+.fd-timeline-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Inner content (carousel) */
+.fd-timeline-img .carousel {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px; /* slightly smaller than frame */
+    overflow: hidden;
+}
+
 
 
     </style>
@@ -1126,9 +1169,30 @@
 
                         <div class="fd-timeline-card h-100">
                             <div class="fd-timeline-img">
-                                <!-- Bild austauschen -->
-                                <img src="../img/nockis.jpg" alt="Feuerwehrfest 2024 – Abendstimmung">
-                            </div>
+    <div id="timeline2024" class="carousel slide" data-bs-touch="true">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="../img/nockis.jpg" class="d-block w-100" alt="Feuerwehrfest 2024">
+            </div>
+            <div class="carousel-item">
+                <img src="../img/nockis.jpg" class="d-block w-100" alt="Feuerwehrfest 2024">
+            </div>
+            <div class="carousel-item">
+                <img src="../img/nockis.jpg" class="d-block w-100" alt="Feuerwehrfest 2024">
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#timeline2024" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#timeline2024" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
+
 
                             <h5>Musik, Emotion &amp; Gänsehaut</h5>
                             <p>
@@ -1150,8 +1214,30 @@
 
                         <div class="fd-timeline-card h-100">
                             <div class="fd-timeline-img">
-                                <img src="../img/draufgaenger.jpg" alt="Feuerwehrfest 2023 – Draufgänger & Gäste">
-                            </div>
+    <div id="timeline2023" class="carousel slide" data-bs-touch="true">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="../img/draufgaenger.jpg" class="d-block w-100" alt="Feuerwehrfest 2023">
+            </div>
+            <div class="carousel-item">
+                <img src="../img/draufgaenger.jpg" class="d-block w-100" alt="Feuerwehrfest 2023">
+            </div>
+            <div class="carousel-item">
+                <img src="../img/draufgaenger.jpg" class="d-block w-100" alt="Feuerwehrfest 2023">
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#timeline2023" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#timeline2023" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
+
 
                             <h5>Feiern bis in die Nacht</h5>
                             <p>
@@ -1173,8 +1259,30 @@
 
                         <div class="fd-timeline-card h-100">
                             <div class="fd-timeline-img">
-                                <img src="../img/melissa.jpg" alt="Feuerwehrfest 2022 – Gemeinschaft">
-                            </div>
+    <div id="timeline2022" class="carousel slide" data-bs-touch="true">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="../img/melissa.jpg" class="d-block w-100" alt="Feuerwehrfest 2022">
+            </div>
+            <div class="carousel-item">
+                <img src="../img/melissa.jpg" class="d-block w-100" alt="Feuerwehrfest 2022">
+            </div>
+            <div class="carousel-item">
+                <img src="../img/melissa.jpg" class="d-block w-100" alt="Feuerwehrfest 2022">
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#timeline2022" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#timeline2022" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
+
 
                             <h5>Tradition trifft Stimmung</h5>
                             <p>

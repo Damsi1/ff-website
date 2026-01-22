@@ -475,13 +475,7 @@ html, body {
    FEUERWEHRFEST – JAHRESFIXPUNKT
    ========================= */
 
-.fd-fest-anchor {
-    background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.006),
-        rgba(0,0,0,0.03)
-    );
-}
+
 
 /* IMAGE */
 .fd-fest-anchor-img {
@@ -827,13 +821,7 @@ html, body {
    NEWS → FACEBOOK BRIDGE
    ========================= */
 
-.fd-news-bridge {
-    background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.006),
-        rgba(0,0,0,0.03)
-    );
-}
+
 
 /* Right panel */
 .fd-news-panel {
@@ -908,20 +896,7 @@ html, body {
    FEUERWEHRFEST – HIGHLIGHT EDITION
    ========================= */
 
-.fd-fest-anchor {
-    position: relative;
-    background:
-        radial-gradient(
-            120% 80% at 20% 40%,
-            rgba(213,224,0,0.06),
-            transparent 60%
-        ),
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,0.006),
-            rgba(0,0,0,0.05)
-        );
-}
+
 
 /* Make text feel a bit more editorial */
 .fd-fest-anchor-text .fd-heading {
@@ -1148,6 +1123,177 @@ html, body {
     opacity: 0.8;
 }
 
+/* === SECTION RHYTHM FIX: Facebook → Fest === */
+
+/* Facebook-Sektion bekommt bewusst mehr Bottom-Space */
+
+
+/* Feuerwehrfest leicht nach oben gezogen */
+
+
+/* Facebook becomes a floating band */
+
+
+
+
+.fd-news-panel {
+    margin-top: 1.5rem;
+}
+
+
+
+
+
+/* Über-uns exit fade */
+.fd-section:first-of-type {
+    position: relative;
+}
+
+.fd-section:first-of-type::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 120px;
+    background: linear-gradient(
+        180deg,
+        rgba(27,28,32,0),
+        rgba(27,28,32,0.85)
+    );
+    pointer-events: none;
+}
+
+
+
+
+.fd-fest-anchor-img {
+    box-shadow: 0 24px 60px rgba(0,0,0,0.75);
+}
+
+
+/* FACEBOOK – FLOATING UTILITY BAND */
+.fd-news-bridge {
+    position: relative;
+    padding: 3rem 0 4.5rem;
+}
+
+.fd-news-bridge::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: min(92%, 1000px);
+    height: 100%;
+    background: var(--fd-panel);
+    border-radius: 22px;
+    border: 1px solid var(--fd-border);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.55);
+    z-index: 0;
+}
+
+.fd-news-bridge > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.fd-news-bridge .row {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* FEUERWEHRFEST – HERO ENTRY */
+.fd-fest-anchor {
+    position: relative;
+    margin-top: -4rem;
+    padding-top: calc(var(--fd-gap) + 4rem);
+    z-index: 2;
+
+    background:
+        radial-gradient(
+            120% 80% at 20% 40%,
+            rgba(213,224,0,0.06),
+            transparent 60%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.006),
+            rgba(0,0,0,0.05)
+        );
+}
+
+.fd-news-pulse {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--fd-yellow);
+}
+
+.fd-news-pulse::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--fd-yellow);
+    box-shadow: 0 0 0 0 rgba(213,224,0,0.6);
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(213,224,0,0.6); }
+    70%  { box-shadow: 0 0 0 8px rgba(213,224,0,0); }
+    100% { box-shadow: 0 0 0 0 rgba(213,224,0,0); }
+}
+
+.fd-news-reward {
+    font-size: 0.9rem;
+    color: #cfcfcf;
+    opacity: 0.85;
+    margin-top: 0.6rem;
+}
+
+.fd-news-bridge .btn {
+    border-width: 2px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.fd-news-bridge .btn:hover {
+    background: rgba(213,224,0,0.12);
+    border-color: var(--fd-yellow);
+    color: var(--fd-yellow);
+}
+
+@media (hover: hover) {
+    .fd-news-panel {
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .fd-news-panel:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 48px rgba(0,0,0,0.65);
+    }
+}
+
+.fd-intro-par.left {
+    text-align: left;
+}
+
+.fd-news-bridge .btn {
+    align-self: flex-start;
+}
+
+.fd-news-bridge a.btn {
+    text-align: left;
+}
+
 
     </style>
 </head>
@@ -1182,7 +1328,7 @@ html, body {
     <div class="hero-gradient-overlay"></div>
     <div class="container hero-content d-flex flex-column justify-content-center align-items-start text-start">
         <h1 class="display-3 fw-bold animate-fadein-up">Willkommen bei der FF-Viehdorf</h1>
-        <p class="lead mt-3 animate-fadein-up delay-1">Ein starkes Team, immer <span class="highlight">einsatzbereit</span>, um für die <span class="highlight">Sicherheit</span> in unserer Gemeinde zu sorgen.</p>
+        <p class="lead mt-3 animate-fadein-up delay-1">Ein starkes Team, immer <span class="highlight">einsatzbereit</span>, um für die <span class="highlight">Sicherheit</span> unserer Mitmenschen zu sorgen.</p>
         <a href="#start" class="btn btn-secondary btn-lg mt-4 animate-fadein-up delay-2">
             Jetzt mehr erfahren <i class="bi bi-arrow-right ms-2"></i>
         </a>
@@ -1197,7 +1343,7 @@ html, body {
 
         <!-- Heading -->
         <h2 class="fd-heading text-center">
-            Bereit. Ehrenamtlich. Für unsere Gemeinde.
+            Bereit. Ehrenamtlich. Für die Gemeinschaft.
         </h2>
         <div class="fd-underline mx-auto"></div>
 
@@ -1388,6 +1534,9 @@ html, body {
         </div>
     </div>
 </section>
+<div class="container">
+    <hr class="fd-section-divider">
+</div>
 
 <!-- =========================
      AKTUELLES / NEWS → FACEBOOK
@@ -1399,20 +1548,26 @@ html, body {
 
             <!-- LEFT: TEXT -->
             <div class="col-lg-6">
-                <h2 class="fd-heading">Aktuelles & Einsätze</h2>
+                <h2 class="fd-heading">
+    Aktuelles & Einsätze
+    <span class="fd-news-pulse">live</span>
+</h2>
+
                 <div class="fd-underline"></div>
 
-                <p class="fd-intro-par">
+                <p class="fd-intro-par left">
                     Ob Einsätze, Übungen, Veranstaltungen oder kurzfristige
                     Informationen – unsere aktuellen Neuigkeiten veröffentlichen
                     wir bewusst auf Facebook.
                 </p>
 
-                <p class="fd-intro-par">
+                <p class="fd-intro-par left">
                     So erreichen wir unsere Gemeinde schnell, transparent
                     und in Echtzeit – genau dort, wo Informationen
                     am häufigsten abgerufen werden.
                 </p>
+
+                              
 
                 <a
                     href="https://www.facebook.com/"
@@ -1423,35 +1578,38 @@ html, body {
                     Zu unseren aktuellen Beiträgen
                     <i class="bi bi-facebook ms-2"></i>
                 </a>
+
+
             </div>
 
             <!-- RIGHT: VISUAL TEASER -->
             <div class="col-lg-6">
                 <div class="fd-news-panel">
+<div class="fd-news-item">
+    <i class="bi bi-lightning-charge-fill"></i>
+    <div>
+        <strong>Einsätze & Alarmierungen</strong>
+        <span>Aktuelle Informationen aus dem Einsatzgeschehen</span>
+    </div>
+</div>
 
-                    <div class="fd-news-item">
-                        <i class="bi bi-lightning-charge-fill"></i>
-                        <div>
-                            <strong>Einsätze & Alarmierungen</strong>
-                            <span>zeitnah & transparent</span>
-                        </div>
-                    </div>
+<div class="fd-news-item">
+    <i class="bi bi-people-fill"></i>
+    <div>
+        <strong>Übungen & Ausbildung</strong>
+        <span>Einblicke in Training, Jugend & Weiterbildung</span>
+    </div>
+</div>
 
-                    <div class="fd-news-item">
-                        <i class="bi bi-people-fill"></i>
-                        <div>
-                            <strong>Übungen & Ausbildung</strong>
-                            <span>Einblicke in unsere Arbeit</span>
-                        </div>
-                    </div>
+<div class="fd-news-item">
+    <i class="bi bi-calendar-event-fill"></i>
+    <div>
+        <strong>Veranstaltungen & Termine</strong>
+        <span>Feuerwehrfest, Termine & Ankündigungen</span>
+    </div>
+</div>
 
-                    <div class="fd-news-item">
-                        <i class="bi bi-calendar-event-fill"></i>
-                        <div>
-                            <strong>Veranstaltungen</strong>
-                            <span>Feuerwehrfest & Termine</span>
-                        </div>
-                    </div>
+
 
                     <div class="fd-news-live">
                         <span></span>
@@ -1465,6 +1623,10 @@ html, body {
 
     </div>
 </section>
+
+<div class="container">
+    <hr class="fd-section-divider">
+</div>
 
 
 
