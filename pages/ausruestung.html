@@ -242,6 +242,11 @@
     }
 
     .fd-house-mini img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        object-position: center;
+        display: block;
         border-radius: var(--fd-radius);
         box-shadow: 0 8px 20px rgba(0,0,0,0.45);
     }
@@ -392,7 +397,9 @@
     /* Stack bottom images cleanly */
     .fd-house-mini img {
         width: 100%;
-        height: auto;
+        height: 190px;
+        object-fit: cover;
+        object-position: center;
         display: block;
     }
 
@@ -831,7 +838,7 @@ html, body {
 
         <!-- bottom images -->
         <div class="row fd-house-mini mt-5 g-4">
-            <div class="col-md-4"><img src="../img/garage.jpg" class="img-fluid"></div>
+            <div class="col-md-4"><img src="../img/KWV_1432.jpg" class="img-fluid"></div>
             <div class="col-md-4"><img src="../img/präsi.jpg" class="img-fluid"></div>
             <div class="col-md-4"><img src="../img/park.jpg" class="img-fluid"></div>
         </div>
@@ -872,8 +879,7 @@ html, body {
             <!-- Kontaktinformationen -->
             <div class="col-md-4 mb-4">
                 <h5 class="mb-3">Kontakt</h5>
-                <p>Adresse: Musterstraße 123<br>12345 Musterstadt</p>
-                <p>Telefon: +43 123 456789</p>
+                <p>Freiwillige Feuerwehr Viehdorf<br>Feuerwehrplatz 1<br>3322 Viehdorf</p>
                 <p>E-Mail: info@ff-viehdorf.at</p>
             </div>
 
@@ -881,10 +887,8 @@ html, body {
             <div class="col-md-4 mb-4">
                 <h5 class="mb-3">Informationen</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#leistungen" class="footer-link">Leistungen</a></li>
-                    <li><a href="#ueber-uns" class="footer-link">Über uns</a></li>
-                    <li><a href="#kontakt" class="footer-link">Kontakt</a></li>
-                    <li><a href="#">Impressum</a></li>
+                    <li><a href="impressum.html" class="footer-link">Impressum</a></li>
+                    <li><a href="datenschutz.html" class="footer-link">Datenschutz</a></li>
                 </ul>
             </div>
 
@@ -893,7 +897,6 @@ html, body {
                 <h5 class="mb-3">Folgen Sie uns</h5>
                 <a href="#" class="footer-social me-3"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="footer-social me-3"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
             </div>
         </div>
 

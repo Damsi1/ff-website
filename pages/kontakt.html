@@ -81,6 +81,41 @@
         box-shadow: 0 0 0 3px rgba(213,224,0,0.25);
     }
 
+    .fd-form-status {
+        display: none;
+        margin-top: 1rem;
+        padding: 0.95rem 1rem;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    .fd-form-status.is-visible {
+        display: block;
+    }
+
+    .fd-form-status.is-success {
+        background: rgba(42, 125, 59, 0.18);
+        border-color: rgba(96, 194, 118, 0.35);
+        color: #d8ffe0;
+    }
+
+    .fd-form-status.is-error {
+        background: rgba(183, 0, 0, 0.16);
+        border-color: rgba(255, 114, 114, 0.3);
+        color: #ffd8d8;
+    }
+
+    .fd-form .btn[disabled] {
+        opacity: 0.7;
+        cursor: wait;
+    }
+
+    .fd-form .h-captcha {
+        margin-top: 1rem;
+    }
+
     /* CONTACT INFO LIST */
     .fd-contact-item {
         display: flex;
@@ -509,23 +544,31 @@ html, body {
                 <div class="fd-underline" style="margin-left:0;"></div>
 
                 <div class="fd-panel fd-form">
-                    <form>
+                    <form id="contactForm" novalidate>
                         <div class="mb-3">
                             <label for="name" class="form-label">Name *</label>
-                            <input type="text" class="form-control" id="name" placeholder="Max Mustermann" required>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Max Mustermann" autocomplete="name" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">E-Mail *</label>
-                            <input type="email" class="form-control" id="email" placeholder="max@example.com" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="max@example.com" autocomplete="email" required>
                         </div>
                         <div class="mb-3">
                             <label for="nachricht" class="form-label">Nachricht *</label>
-                            <textarea class="form-control" id="nachricht" rows="5" placeholder="Deine Nachricht..." required></textarea>
+                            <textarea class="form-control" id="nachricht" name="message" rows="5" placeholder="Deine Nachricht..." required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-secondary btn-lg mt-2">
+                        <div
+                            class="h-captcha"
+                            data-sitekey="06b08eb0-2b5c-4510-b4ea-69d4c5cc7880"
+                            data-theme="dark"
+                        ></div>
+
+                        <button type="submit" class="btn btn-secondary btn-lg mt-2" id="contactSubmit">
                             Absenden <i class="bi bi-send ms-1"></i>
                         </button>
+
+                        <div id="contactStatus" class="fd-form-status" role="status" aria-live="polite"></div>
                     </form>
                 </div>
             </div>
@@ -559,7 +602,6 @@ html, body {
                     <div class="d-flex">
                         <a href="#" class="footer-social me-3"><i class="bi bi-facebook"></i></a>
                         <a href="#" class="footer-social me-3"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
                     </div>
 
                 </div>
@@ -612,15 +654,13 @@ html, body {
                 <h5>KONTAKT</h5>
                 
                 <p class="mb-2">
-                    Adresse: Musterstraße 123<br>
-                    12345 Musterstadt
-                </p>
-                <p class="mb-2">
-                    Telefon: +43 123 456789
+                    Freiwillige Feuerwehr Viehdorf<br>
+                    Feuerwehrplatz 1<br>
+                    3322 Viehdorf
                 </p>
                 <p class="mb-0">
                     E-Mail:
-                    <a href="mailto:info@firma.at">info@firma.at</a>
+                    <a href="mailto:info@ff-viehdorf.at">info@ff-viehdorf.at</a>
                 </p>
             </div>
 
@@ -630,19 +670,10 @@ html, body {
                 
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="../index.html">Startseite</a>
-                    </li>
-                    <li>
-                        <a href="uns.html">Über uns</a>
-                    </li>
-                    <li>
-                        <a href="ausruestung.html">Ausrüstung</a>
-                    </li>
-                    <li>
-                        <a href="karriere.html">Karriere</a>
-                    </li>
-                    <li>
                         <a href="impressum.html">Impressum</a>
+                    </li>
+                    <li>
+                        <a href="datenschutz.html">Datenschutz</a>
                     </li>
                 </ul>
             </div>
@@ -659,10 +690,6 @@ html, body {
 
                     <a href="#" class="footer-social" aria-label="Instagram">
                         <i class="bi bi-instagram"></i>
-                    </a>
-
-                    <a href="#" class="footer-social" aria-label="LinkedIn">
-                        <i class="bi bi-linkedin"></i>
                     </a>
                 </div>
             </div>
@@ -684,6 +711,7 @@ html, body {
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 <script>
    // Keep existing navbar shrink behavior (unchanged)
     window.addEventListener('scroll', function () {
@@ -770,7 +798,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ---------------------------------
-       4. FORM FIELD FOCUS MICRO-MOTION
+       4. CONTACT FORM SUBMIT
+       --------------------------------- */
+    const contactForm = document.getElementById("contactForm");
+    const contactStatus = document.getElementById("contactStatus");
+    const submitButton = document.getElementById("contactSubmit");
+
+    const setContactStatus = (message, type) => {
+        if (!contactStatus) return;
+
+        contactStatus.textContent = message;
+        contactStatus.className = `fd-form-status is-visible ${type === "success" ? "is-success" : "is-error"}`;
+    };
+
+    if (contactForm && contactStatus && submitButton) {
+        contactForm.addEventListener("submit", async event => {
+            event.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const captchaToken = window.hcaptcha ? window.hcaptcha.getResponse() : "";
+
+            if (!contactForm.reportValidity()) {
+                return;
+            }
+
+            if (!captchaToken) {
+                setContactStatus("Bitte bestätige zuerst das hCaptcha, bevor du die Nachricht absendest.", "error");
+                return;
+            }
+
+            formData.append("h-captcha-response", captchaToken);
+
+            submitButton.disabled = true;
+            setContactStatus("Nachricht wird gerade sicher versendet ...", "success");
+
+            try {
+                const response = await fetch("../api/contact.php", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                });
+
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    throw new Error(result.message || "Der Versand konnte leider nicht abgeschlossen werden.");
+                }
+
+                contactForm.reset();
+                if (window.hcaptcha) {
+                    window.hcaptcha.reset();
+                }
+
+                setContactStatus(result.message || "Danke! Deine Nachricht wurde versendet und die Bestätigung ist unterwegs.", "success");
+            } catch (error) {
+                if (window.hcaptcha) {
+                    window.hcaptcha.reset();
+                }
+
+                setContactStatus(error.message || "Beim Absenden ist ein Fehler aufgetreten. Bitte versuche es erneut.", "error");
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
+    }
+
+
+    /* ---------------------------------
+       5. FORM FIELD FOCUS MICRO-MOTION
        --------------------------------- */
     document.querySelectorAll(".fd-form .form-control").forEach(field => {
         field.addEventListener("focus", () => {
@@ -784,7 +881,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ---------------------------------
-       5. MAP PARALLAX (VERY SUBTLE)
+       6. MAP PARALLAX (VERY SUBTLE)
        --------------------------------- */
     const mapFrame = document.querySelector(".fd-map-sec iframe");
     if (mapFrame) {
@@ -800,7 +897,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ---------------------------------
-       6. CTA-LIKE BUTTON EMPHASIS
+       7. CTA-LIKE BUTTON EMPHASIS
        --------------------------------- */
     document.querySelectorAll("button.btn-lg, .btn.btn-secondary").forEach(btn => {
         btn.addEventListener("mouseenter", () => {
@@ -814,7 +911,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ---------------------------------
-       7. SMOOTH INTERNAL ANCHORS
+       8. SMOOTH INTERNAL ANCHORS
        --------------------------------- */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", e => {
@@ -831,7 +928,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ---------------------------------
-       8. SCROLL DIRECTION STATE
+       9. SCROLL DIRECTION STATE
        (SITE-WIDE CONSISTENCY)
        --------------------------------- */
     let lastY = window.scrollY;

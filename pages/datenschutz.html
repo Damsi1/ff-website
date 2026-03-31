@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datenschutz | FF-Viehdorf</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
+
+    <style>
+    :root {
+        --fd-bg:#1b1c20;
+        --fd-panel:#24262b;
+        --fd-border:rgba(255,255,255,0.08);
+        --fd-red:#b70000;
+        --fd-yellow:#d5e000;
+        --fd-radius:14px;
+        --fd-title:'Uncage',sans-serif;
+    }
+
+    body {
+        background: var(--fd-bg);
+        color: #e7e7e7;
+    }
+
+    .fd-section { padding: 4rem 0; }
+
+    .fd-heading {
+        font-family: var(--fd-title);
+        color: #fff;
+        font-size: 2.5rem;
+    }
+
+    .fd-underline {
+        width: 90px;
+        height: 5px;
+        margin: .6rem 0 2rem;
+        background: linear-gradient(90deg, var(--fd-yellow), var(--fd-red));
+        border-radius: 6px;
+    }
+
+    .fd-legal-card {
+        background: var(--fd-panel);
+        border: 1px solid var(--fd-border);
+        border-radius: var(--fd-radius);
+        padding: 2rem;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+        margin-bottom: 1.25rem;
+    }
+
+    .fd-legal-card h2 {
+        font-family: var(--fd-title);
+        color: var(--fd-yellow);
+        font-size: 1.35rem;
+        margin-bottom: 1rem;
+    }
+
+    .fd-legal-card p {
+        color: #d6d6d6;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    html, body {
+        overflow-x: visible;
+    }
+
+    .hero-modern,
+    .fd-section,
+    .collage-grid,
+    .parallax-section {
+        overflow-x: hidden;
+    }
+
+    .navbar {
+        position: sticky !important;
+        top: 0;
+        z-index: 1060;
+    }
+
+    .navbar,
+    .navbar * {
+        transform: none !important;
+    }
+
+    .footer {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255,255,255,0.006),
+                rgba(0,0,0,0.04)
+            ),
+            var(--fd-bg);
+        border-top: 1px solid rgba(255,255,255,0.08);
+        box-shadow: inset 0 12px 30px rgba(0,0,0,0.55);
+        font-size: 0.95rem;
+        position: relative;
+        z-index: 5;
+    }
+
+    .footer h5 {
+        font-family: var(--fd-title);
+        font-size: 1.05rem;
+        letter-spacing: 0.6px;
+        color: #ffffff;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .footer h5::after {
+        content: "";
+        display: block;
+        width: 38px;
+        height: 3px;
+        margin-top: 0.45rem;
+        background: linear-gradient(90deg, var(--fd-yellow), var(--fd-red));
+        border-radius: 4px;
+    }
+
+    .footer p,
+    .footer small {
+        color: #cfcfcf;
+        line-height: 1.6;
+    }
+
+    .footer a {
+        color: #cfcfcf;
+        text-decoration: none;
+        transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    .footer a:hover {
+        color: var(--fd-yellow);
+        transform: translateX(2px);
+    }
+
+    .footer ul li {
+        margin-bottom: 0.45rem;
+    }
+
+    .footer-social {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: #2d2f34;
+        border: 1px solid var(--fd-border);
+        color: #ffffff;
+        font-size: 1.15rem;
+        transition:
+            background 0.25s ease,
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .footer-social:hover {
+        background: rgba(183,0,0,0.12);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 22px rgba(0,0,0,0.55);
+        color: var(--fd-yellow);
+    }
+
+    .footer hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.15),
+            transparent
+        );
+        margin: 2rem 0 1.5rem;
+    }
+
+    .footer small {
+        opacity: 0.85;
+    }
+
+    .navbar-toggler {
+        border-color: rgba(255,255,255,0.4);
+    }
+
+    @media (max-width: 767.98px) {
+        .fd-section { padding: 2.5rem 0; }
+        .fd-heading { font-size: 1.8rem; }
+        .fd-legal-card { padding: 1.35rem; }
+        .footer {
+            text-align: center;
+        }
+        .footer h5::after {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-social {
+            margin: 0 0.35rem;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top navbar-large">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="../index.html">
+            <img src="../img/logo.png" alt="FF-Viehdorf Logo" class="logo-img me-2">
+            <span class="brand-text">FF-Viehdorf</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Start</a></li>
+                <li class="nav-item"><a class="nav-link" href="uns.html">Über uns</a></li>
+                <li class="nav-item"><a class="nav-link" href="ausruestung.html">Ausrüstung</a></li>
+                <li class="nav-item"><a class="nav-link" href="fj.html">Feuerwehrjugend</a></li>
+                <li class="nav-item"><a class="nav-link" href="zeltfest.html">Feuerwehrfest</a></li>
+                <li class="nav-item"><a class="nav-link" href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<section class="fd-section">
+    <div class="container">
+        <h2 class="fd-heading text-center">Datenschutzerklärung</h2>
+        <div class="fd-underline mx-auto"></div>
+
+        <div class="mx-auto" style="max-width: 900px;">
+            <div class="fd-legal-card">
+                <h2>Allgemeines</h2>
+                <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Website ist grundsätzlich so aufgebaut, dass keine personenbezogenen Daten aktiv gesammelt werden und keine Cookies zu Analyse- oder Marketingzwecken verwendet werden.</p>
+            </div>
+
+            <div class="fd-legal-card">
+                <h2>Keine allgemeine Datensammlung</h2>
+                <p>Beim normalen Besuch dieser Website werden von uns keine Benutzerkonten angelegt, keine Newsletterdaten erhoben und keine Tracking- oder Analyseprofile erstellt. Es erfolgt keine gezielte Speicherung personenbezogener Daten über diese Website, außer wenn Sie uns diese freiwillig über das Kontaktformular übermitteln.</p>
+            </div>
+
+            <div class="fd-legal-card">
+                <h2>Keine Cookies</h2>
+                <p>Diese Website verwendet nach unserem derzeitigen Stand keine eigenen Cookies für Statistik, Werbung oder Komfortfunktionen.</p>
+            </div>
+
+            <div class="fd-legal-card">
+                <h2>Kontaktformular</h2>
+                <p>Wenn Sie uns über das Kontaktformular schreiben, werden die von Ihnen eingegebenen Daten wie Name, E-Mail-Adresse und Nachricht ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Diese Daten werden nicht für Werbung genutzt und nicht ohne Erforderlichkeit an Dritte weitergegeben.</p>
+            </div>
+
+            <div class="fd-legal-card">
+                <h2>Verwendung von hCaptcha</h2>
+                <p>Zum Schutz vor Spam und missbräuchlichen automatisierten Eingaben verwenden wir im Kontaktformular hCaptcha. Dabei kann es technisch erforderlich sein, dass Daten an den Anbieter von hCaptcha übermittelt werden, insbesondere IP-Adresse, technische Browserinformationen, Nutzungsverhalten im Zusammenhang mit der Sicherheitsprüfung sowie der eingegebene hCaptcha-Token. Die Verarbeitung erfolgt ausschließlich zur Absicherung des Formulars gegen Missbrauch.</p>
+            </div>
+
+            <div class="fd-legal-card">
+                <h2>Zweck der Verarbeitung</h2>
+                <p>Die Verarbeitung im Zusammenhang mit hCaptcha und dem Kontaktformular erfolgt ausschließlich zum Schutz unserer Website und zur Bearbeitung Ihrer Anfrage.</p>
+            </div>
+
+            <div class="fd-legal-card">
+                <h2>Ihre Rechte</h2>
+                <p>Sie haben im Rahmen der gesetzlichen Bestimmungen grundsätzlich das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung sowie gegebenenfalls Widerspruch. Wenn Sie Fragen zum Datenschutz auf dieser Website haben, können Sie sich an die Freiwillige Feuerwehr Viehdorf wenden.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer text-white pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Kontakt</h5>
+                <p>Freiwillige Feuerwehr Viehdorf<br>Feuerwehrplatz 1<br>3322 Viehdorf</p>
+                <p>E-Mail: info@ff-viehdorf.at</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Informationen</h5>
+                <ul class="list-unstyled">
+                    <li><a href="impressum.html" class="footer-link">Impressum</a></li>
+                    <li><a href="datenschutz.html" class="footer-link">Datenschutz</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Folgen Sie uns</h5>
+                <a href="#" class="footer-social me-3"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="footer-social me-3"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+        <hr class="bg-light">
+        <div class="text-center">
+            <small>&copy; 2016 FF Viehdorf. Alle Rechte vorbehalten.</small>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('navbar-shrink');
+        navbar.classList.remove('navbar-large');
+    } else {
+        navbar.classList.remove('navbar-shrink');
+        navbar.classList.add('navbar-large');
+    }
+});
+</script>
+</body>
+</html>
