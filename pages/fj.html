@@ -119,6 +119,121 @@
         color: var(--fd-red);
     }
 
+    .fd-youth-social-wrap {
+        max-width: 920px;
+        margin: 0 auto;
+    }
+
+    .fd-youth-social-card {
+        position: relative;
+        overflow: hidden;
+        background:
+            radial-gradient(circle at top left, rgba(213,224,0,0.13), transparent 34%),
+            radial-gradient(circle at bottom right, rgba(189,0,0,0.16), transparent 36%),
+            linear-gradient(135deg, #24262b, #1d1f22);
+        border: 1px solid var(--fd-border);
+        border-radius: 22px;
+        padding: 2rem 2rem 1.9rem;
+        box-shadow: 0 18px 42px rgba(0,0,0,0.42);
+    }
+
+    .fd-youth-social-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(255,255,255,0.03), transparent 42%);
+        pointer-events: none;
+    }
+
+    .fd-youth-social-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 1.4rem;
+        align-items: center;
+    }
+
+    .fd-youth-social-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        margin-bottom: 0.9rem;
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(213,224,0,0.12);
+        border: 1px solid rgba(213,224,0,0.24);
+        color: var(--fd-yellow);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .fd-youth-social-title {
+        font-family: var(--fd-title);
+        font-size: 2rem;
+        line-height: 1.02;
+        color: #fff;
+        margin-bottom: 0.75rem;
+    }
+
+    .fd-youth-social-copy {
+        color: var(--fd-text);
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 0;
+        max-width: 52ch;
+    }
+
+    .fd-youth-social-side {
+        display: grid;
+        gap: 0.85rem;
+        justify-items: start;
+    }
+
+    .fd-youth-social-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.7rem 0.95rem;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+        color: #f1f1f1;
+        font-weight: 600;
+    }
+
+    .fd-youth-social-chip i {
+        color: var(--fd-yellow);
+    }
+
+    .fd-youth-social-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        padding: 0.95rem 1.2rem;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #1877f2, #0d5fd3);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 800;
+        box-shadow: 0 14px 26px rgba(13,95,211,0.28);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    }
+
+    .fd-youth-social-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 34px rgba(13,95,211,0.34);
+        filter: brightness(1.03);
+        color: #fff;
+    }
+
+    .fd-youth-social-btn i {
+        font-size: 1.15rem;
+    }
+
     /* CTA */
     .fd-cta {
         background: linear-gradient(180deg, var(--fd-red), rgba(189,0,0,0.5));
@@ -258,6 +373,41 @@
     .fd-quote-card p {
         font-size: 0.95rem;
         line-height: 1.6;
+    }
+
+    .fd-youth-social-card {
+        padding: 1.35rem;
+        border-radius: 18px;
+    }
+
+    .fd-youth-social-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .fd-youth-social-title {
+        font-size: 1.55rem;
+        line-height: 1.08;
+    }
+
+    .fd-youth-social-copy {
+        font-size: 0.95rem;
+        line-height: 1.65;
+    }
+
+    .fd-youth-social-side {
+        justify-items: stretch;
+    }
+
+    .fd-youth-social-chip {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .fd-youth-social-btn {
+        width: 100%;
+        padding: 0.9rem 1rem;
     }
 
     /* --- CTA --- */
@@ -573,7 +723,7 @@ html, body {
     <div class="container hero-content d-flex flex-column justify-content-center align-items-start text-start">
         <h1 class="display-3 fw-bold animate-fadein-up">Unsere Feuerwehrjugend</h1>
         <p class="lead mt-3 animate-fadein-up delay-1">Engagiert, kameradschaftlich, <span class="highlight">bereit für die Zukunft</span></p>
-        <a href="#start" class="btn btn-secondary btn-lg mt-4 animate-fadein-up delay-2">
+        <a href="#start" id="start" class="btn btn-secondary btn-lg mt-4 animate-fadein-up delay-2">
             Jetzt mehr erfahren <i class="bi bi-arrow-right ms-2"></i>
         </a>
     </div>
@@ -582,7 +732,7 @@ html, body {
 <!-- ===================================================== -->
 <!-- WHY JOIN (PLAYFUL INTRO SECTION) -->
 <!-- ===================================================== -->
-<section id="start" class="fd-section fd-youth-why text-center">
+<section  class="fd-section fd-youth-why text-center">
     <div class="container">
 
         <h2 class="fd-heading">Warum Feuerwehrjugend?</h2>
@@ -696,6 +846,42 @@ html, body {
     </div>
 </section>
 
+<section class="fd-section">
+    <div class="container">
+        <div class="fd-youth-social-wrap">
+            <div class="fd-youth-social-card">
+                <div class="fd-youth-social-grid">
+                    <div>
+                        <div class="fd-youth-social-kicker">
+                            <i class="bi bi-stars"></i>
+                            Jugend-News live
+                        </div>
+                        <h2 class="fd-youth-social-title">Noch mehr Feuerwehrjugend zum Reinschauen</h2>
+                        <p class="fd-youth-social-copy">
+                            Auf Facebook zeigen wir Eindrücke aus Übungen, Ausflügen, Lagern und gemeinsamen Momenten unserer Feuerwehrjugend. Perfekt, wenn du sehen willst, wie viel Teamgeist, Spaß und Action bei uns wirklich drinsteckt.
+                        </p>
+                    </div>
+
+                    <div class="fd-youth-social-side">
+                        <div class="fd-youth-social-chip">
+                            <i class="bi bi-camera-fill"></i>
+                            Fotos, Einblicke und aktuelle Highlights
+                        </div>
+                        <div class="fd-youth-social-chip">
+                            <i class="bi bi-people-fill"></i>
+                            Direkt aus dem Jugendalltag in Viehdorf
+                        </div>
+                        <a href="https://www.facebook.com/FeuerwehrjugendViehdorf?locale=de_DE" target="_blank" rel="noopener noreferrer" class="fd-youth-social-btn">
+                            <i class="bi bi-facebook"></i>
+                            Zur Feuerwehrjugend auf Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ===================================================== -->
 <!-- CTA JOIN -->
 <!-- ===================================================== -->
@@ -747,6 +933,7 @@ html, body {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/lightbox.js"></script>
+<script src="../js/hero-scroll-fix.js"></script>
 <script>
     // Keep existing navbar shrink behavior (unchanged)
     window.addEventListener('scroll', function () {
@@ -779,6 +966,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .fd-act-panel,
         .fd-activities img,
         .fd-quote-card,
+        .fd-youth-social-card,
         .fd-cta
     `);
 
@@ -815,27 +1003,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".fd-act-panel").forEach((panel, i) => {
         panel.style.transitionDelay = `${i * 140}ms`;
     });
-
-
-    /* ---------------------------------
-       4. IMAGE PARALLAX (VERY SUBTLE)
-       Youth-safe (no motion sickness)
-       --------------------------------- */
-    const parallaxImgs = document.querySelectorAll(
-        ".fd-activities img"
-    );
-
-    window.addEventListener("scroll", () => {
-        const vh = window.innerHeight;
-        parallaxImgs.forEach(img => {
-            const r = img.getBoundingClientRect();
-            if (r.bottom > 0 && r.top < vh) {
-                const offset = (r.top - vh / 2) * 0.035;
-                img.style.transform = `translateY(${offset}px) scale(1.02)`;
-            }
-        });
-    });
-
 
     /* ---------------------------------
        5. QUOTE CARDS CASCADE

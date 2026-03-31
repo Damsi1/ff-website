@@ -624,7 +624,7 @@ html, body {
     <div class="container hero-content d-flex flex-column justify-content-center align-items-start text-start">
         <h1 class="display-3 fw-bold animate-fadein-up">Unsere Ausrüstung</h1>
         <p class="lead mt-3 animate-fadein-up delay-1">Modern, leistungsfähig, <span class="highlight">einsatzbereit</span></p>
-        <a href="#start" class="btn btn-secondary btn-lg mt-4 animate-fadein-up delay-2">
+        <a href="#start" id="start" class="btn btn-secondary btn-lg mt-4 animate-fadein-up delay-2">
             Jetzt mehr erfahren <i class="bi bi-arrow-right ms-2"></i>
         </a>
     </div>
@@ -635,7 +635,7 @@ html, body {
 <!-- ============================= -->
 <!--   SECTION: Fahrzeugflotte     -->
 <!-- ============================= -->
-<section id="start" class="fd-section fd-band">
+<section  class="fd-section fd-band">
     <div class="container">
 
         <h2 class="fd-heading text-center">Fahrzeugflotte im Überblick</h2>
@@ -913,6 +913,7 @@ html, body {
 <!-- SCRIPT: vehicle details animation -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/lightbox.js"></script>
+<script src="../js/hero-scroll-fix.js"></script>
 <script>
     document.querySelectorAll('.toggle-btn').forEach(btn => {
         btn.addEventListener('click', function () {
@@ -1017,26 +1018,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".fd-equip-tile").forEach((tile, i) => {
         tile.style.transitionDelay = `${i * 110}ms`;
     });
-
-
-    /* ---------------------------------
-       5. IMAGE PARALLAX (VERY SUBTLE)
-       --------------------------------- */
-    const parallaxImgs = document.querySelectorAll(
-        ".fd-card img, .fd-house-img img, .fd-house-mini img"
-    );
-
-    window.addEventListener("scroll", () => {
-        const vh = window.innerHeight;
-        parallaxImgs.forEach(img => {
-            const r = img.getBoundingClientRect();
-            if (r.bottom > 0 && r.top < vh) {
-                const offset = (r.top - vh / 2) * 0.045;
-                img.style.transform = `translateY(${offset}px) scale(1.02)`;
-            }
-        });
-    });
-
 
     /* ---------------------------------
        6. SMOOTH INTERNAL ANCHORS
