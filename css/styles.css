@@ -250,6 +250,61 @@ h1{
     color: #e0d900; /* Akzentfarbe als Highlight */
 }
 
+.fd-lightbox-target {
+    cursor: zoom-in;
+}
+
+.fd-global-lightbox .modal-content {
+    background: rgba(10,10,10,0.96);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.fd-global-lightbox .modal-header {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: #fff;
+}
+
+.fd-global-lightbox .btn-close {
+    filter: invert(1);
+}
+
+.fd-global-lightbox .modal-body {
+    padding: 0;
+    background: #050505;
+}
+
+.fd-global-lightbox-carousel,
+.fd-global-lightbox-carousel .carousel-inner,
+.fd-global-lightbox-carousel .carousel-item {
+    height: min(78vh, 900px);
+}
+
+.fd-global-lightbox-carousel .carousel-item {
+    background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95));
+}
+
+.fd-global-lightbox-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.fd-global-lightbox-carousel .carousel-control-prev,
+.fd-global-lightbox-carousel .carousel-control-next {
+    width: 12%;
+}
+
+.fd-global-lightbox-carousel .carousel-control-prev-icon,
+.fd-global-lightbox-carousel .carousel-control-next-icon {
+    background-color: rgba(0,0,0,0.42);
+    border-radius: 50%;
+    padding: 1.4rem;
+    background-size: 60% 60%;
+}
+
 /* Neuer Hero Style */
 .hero-modern {
     position: relative;
