@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    const getLightboxImageSrc = img => img?.dataset?.src || img?.currentSrc || img?.src || "";
+
     const existingModal = document.getElementById("fdGlobalLightbox");
     if (!existingModal) {
         document.body.insertAdjacentHTML(
@@ -88,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault();
             event.stopPropagation();
             openLightbox(
-                [{ src: img.currentSrc || img.src, alt: img.alt || "Bildansicht" }],
+                [{ src: getLightboxImageSrc(img), alt: img.alt || "Bildansicht" }],
                 0,
                 img.alt || "Bildansicht"
             );
@@ -134,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             openLightbox(
                 images.map(img => ({
-                    src: img.currentSrc || img.src,
+                    src: getLightboxImageSrc(img),
                     alt: img.alt || titleSource
                 })),
                 activeIndex,
