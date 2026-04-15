@@ -102,8 +102,8 @@
         box-shadow: 0 12px 26px rgba(0,0,0,0.4);
     }
     .fd-lead-avatar {
-        width: 130px;
-        height: 130px;
+        width: 165px;
+        height: 165px;
         border-radius: 50%;
         overflow: hidden;
         margin: 0 auto 1rem;
@@ -119,6 +119,40 @@
         font-size: 1.3rem;
     }
     .fd-lead-role { color: #d0d0d0; }
+    .fd-command-photo-section {
+        max-width: 900px;
+        margin: 1.5rem auto 0;
+        background: var(--fd-panel);
+        border: 1px solid var(--fd-border);
+        border-radius: var(--fd-radius);
+        padding: 1rem;
+    }
+    .fd-command-photo-title {
+        font-family: var(--fd-title);
+        font-size: 1.45rem;
+        font-weight: 400;
+        color: #fff;
+        margin: 0 0 1rem;
+        text-align: center;
+    }
+    .fd-command-photo {
+        overflow: hidden;
+        border-radius: var(--fd-radius);
+        border: 1px solid rgba(255,255,255,0.14);
+    }
+    .fd-command-photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .fd-command-photo-caption {
+        padding: 0.85rem 0.2rem 0;
+        color: var(--fd-yellow);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        text-align: center;
+    }
 
     /* WERTE */
     .fd-values-panel {
@@ -188,10 +222,43 @@
         border-radius: var(--fd-radius);
         overflow: hidden;
         border: 1px solid rgba(255,255,255,0.12);
+        background: var(--fd-panel);
     }
     .fd-timeline-img-wrap img {
         width: 100%;
         object-fit: cover;
+    }
+    .fd-history-carousel .carousel-item img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+    }
+    .fd-history-carousel .carousel-indicators {
+        margin-bottom: 0.75rem;
+    }
+    .fd-history-carousel .carousel-indicators [data-bs-target] {
+        width: 9px;
+        height: 9px;
+        border: 0;
+        border-radius: 50%;
+        background-color: rgba(255,255,255,0.45);
+    }
+    .fd-history-carousel .carousel-indicators .active {
+        background-color: var(--fd-yellow);
+    }
+    .fd-history-carousel .carousel-control-prev,
+    .fd-history-carousel .carousel-control-next {
+        width: 48px;
+        opacity: 1;
+    }
+    .fd-history-carousel .carousel-control-prev-icon,
+    .fd-history-carousel .carousel-control-next-icon {
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
+        background-color: rgba(27,28,32,0.78);
+        background-size: 55% 55%;
     }
 
     /* STATS */
@@ -315,8 +382,21 @@
     }
 
     .fd-lead-avatar {
-        width: 110px;
-        height: 110px;
+        width: 140px;
+        height: 140px;
+    }
+
+    .fd-command-photo-section {
+        margin-top: 1.25rem;
+    }
+
+    .fd-command-photo-title {
+        font-size: 1.15rem;
+    }
+
+    .fd-command-photo-caption {
+        font-size: 0.92rem;
+        line-height: 1.5;
     }
 
     .fd-lead-name {
@@ -357,6 +437,17 @@
     /* Stack image BELOW timeline on mobile */
     .fd-timeline-img-wrap {
         margin-top: 1.5rem;
+    }
+
+    .fd-history-carousel .carousel-control-prev,
+    .fd-history-carousel .carousel-control-next {
+        width: 42px;
+    }
+
+    .fd-history-carousel .carousel-control-prev-icon,
+    .fd-history-carousel .carousel-control-next-icon {
+        width: 2rem;
+        height: 2rem;
     }
 
     /* --- STATS / CHART --- */
@@ -645,7 +736,7 @@ html, body {
 
 <!-- HERO (UNVERÄNDERT) -->
 <header class="hero-modern position-relative text-white">
-    <div class="hero-bg" style="background-image: url('../img/WhatsApp Bild 2025-11-18 um 18.49.17_29cbfc94.jpg');"></div>
+    <div class="hero-bg" style="background-image: url('../img/headeruns.jpg');"></div>
     <div class="hero-gradient-overlay"></div>
     <div class="container hero-content d-flex flex-column justify-content-center align-items-start text-start">
         <h1 class="display-3 fw-bold animate-fadein-up">Lernen Sie die FF-Viehdorf kennen!</h1>
@@ -701,15 +792,7 @@ html, body {
 
             <div class="col-md-4">
                 <div class="fd-lead-card">
-                    <div class="fd-lead-avatar"><img src="../img/user.jpeg"></div>
-                    <div class="fd-lead-name">Julian Zach</div>
-                    <div class="fd-lead-role">Kommandant</div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="fd-lead-card">
-                    <div class="fd-lead-avatar"><img src="../img/user.jpeg"></div>
+                    <div class="fd-lead-avatar"><img src="../img/franzlechner.jpg"></div>
                     <div class="fd-lead-name">Franz Lechner</div>
                     <div class="fd-lead-role">Stellv. Kommandant</div>
                 </div>
@@ -717,12 +800,36 @@ html, body {
 
             <div class="col-md-4">
                 <div class="fd-lead-card">
-                    <div class="fd-lead-avatar"><img src="../img/user.jpeg"></div>
+                    <div class="fd-lead-avatar"><img src="../img/julianzach.jpg"></div>
+                    <div class="fd-lead-name">Julian Zach</div>
+                    <div class="fd-lead-role">Kommandant</div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="fd-lead-card">
+                    <div class="fd-lead-avatar"><img src="../img/haraldkronberger.jpg"></div>
                     <div class="fd-lead-name">Harald Kronberger</div>
                     <div class="fd-lead-role">Leitung Verwaltungsdienst</div>
                 </div>
             </div>
 
+        </div>
+    </div>
+</section>
+
+
+<!-- KOMMANDO-GRUPPENFOTO -->
+<section class="fd-section pt-0">
+    <div class="container text-center">
+        <div class="fd-command-photo-section">
+            <div class="fd-command-photo-title">Das Kommando der FF Viehdorf</div>
+            <div class="fd-command-photo">
+                <img src="../img/kommandoviehdorf.jpg" alt="Kommando der FF Viehdorf">
+            </div>
+            <div class="fd-command-photo-caption">
+                Gemeinsam Verantwortung tragen.
+            </div>
         </div>
     </div>
 </section>
@@ -815,7 +922,37 @@ html, body {
             <!-- IMAGE RIGHT -->
             <div class="col-lg-6">
                 <div class="fd-timeline-img-wrap">
-                    <img src="../img/IMG_1637.JPG" alt="Feuerwehr Viehdorf Historie">
+                    <div id="fdHistoryCarousel" class="carousel slide fd-history-carousel" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#fdHistoryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Historie Bild 1"></button>
+                            <button type="button" data-bs-target="#fdHistoryCarousel" data-bs-slide-to="1" aria-label="Historie Bild 2"></button>
+                            <button type="button" data-bs-target="#fdHistoryCarousel" data-bs-slide-to="2" aria-label="Historie Bild 3"></button>
+                            <button type="button" data-bs-target="#fdHistoryCarousel" data-bs-slide-to="3" aria-label="Historie Bild 4"></button>
+                        </div>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../img/525135223_1599421871335439_770945924993399111_n.jpg" alt="Historisches Bild der FF Viehdorf 3">
+                            </div>
+                            <div class="carousel-item ">
+                                <img src="../img/179809950_4174078752636605_3434142947332774807_n.jpg" alt="Historisches Bild der FF Viehdorf 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../img/524129722_1599421838002109_4958121701078869853_n.jpg" alt="Historisches Bild der FF Viehdorf 2">
+                            </div>
+                            
+                            <div class="carousel-item">
+                                <img src="../img/548418922_1645054200105539_2488590970987444620_n.jpg" alt="Historisches Bild der FF Viehdorf 4">
+                            </div>
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#fdHistoryCarousel" data-bs-slide="prev" aria-label="Vorheriges Bild">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#fdHistoryCarousel" data-bs-slide="next" aria-label="Nächstes Bild">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
