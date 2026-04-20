@@ -84,27 +84,92 @@
     .fd-form-status {
         display: none;
         margin-top: 1rem;
-        padding: 0.95rem 1rem;
-        border-radius: 12px;
+        padding: 1rem 1.05rem;
+        border-radius: 16px;
         border: 1px solid transparent;
-        font-weight: 600;
         line-height: 1.5;
+        box-shadow: 0 14px 26px rgba(0,0,0,0.18);
+        transform: translateY(8px);
+        opacity: 0;
+        transition: opacity 0.28s ease, transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
     }
 
     .fd-form-status.is-visible {
         display: block;
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .fd-form-status.is-success {
-        background: rgba(42, 125, 59, 0.18);
-        border-color: rgba(96, 194, 118, 0.35);
-        color: #d8ffe0;
+        background: linear-gradient(135deg, rgba(213,224,0,0.16), rgba(238,247,138,0.08));
+        border-color: rgba(213,224,0,0.45);
+        color: #f4f8d7;
     }
 
     .fd-form-status.is-error {
         background: rgba(183, 0, 0, 0.16);
         border-color: rgba(255, 114, 114, 0.3);
         color: #ffd8d8;
+    }
+
+    .fd-form-status.is-progress {
+        background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(213,224,0,0.08));
+        border-color: rgba(255,255,255,0.16);
+        color: #f4f4f5;
+    }
+
+    .fd-form-status-card {
+        display: flex;
+        gap: 0.95rem;
+        align-items: flex-start;
+    }
+
+    .fd-form-status-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 44px;
+        font-size: 1.2rem;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.08);
+    }
+
+    .fd-form-status.is-success .fd-form-status-icon {
+        background: rgba(213,224,0,0.22);
+        border-color: rgba(213,224,0,0.35);
+        color: #f3ff9e;
+    }
+
+    .fd-form-status.is-error .fd-form-status-icon {
+        background: rgba(183, 0, 0, 0.22);
+        border-color: rgba(255, 114, 114, 0.25);
+        color: #ffd0d0;
+    }
+
+    .fd-form-status.is-progress .fd-form-status-icon {
+        background: rgba(255,255,255,0.08);
+        color: #fff7bf;
+    }
+
+    .fd-form-status-content {
+        min-width: 0;
+    }
+
+    .fd-form-status-title {
+        margin: 0 0 0.3rem;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+    }
+
+    .fd-form-status-message {
+        margin: 0;
+        font-size: 0.96rem;
+        line-height: 1.65;
+        color: inherit;
     }
 
     .fd-form .btn[disabled] {
@@ -270,6 +335,25 @@
         width: 100%;
         font-size: 1rem;
         padding: 0.75rem 1rem;
+    }
+
+    .fd-form-status-card {
+        gap: 0.8rem;
+    }
+
+    .fd-form-status-icon {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+        font-size: 1.05rem;
+    }
+
+    .fd-form-status-title {
+        font-size: 0.98rem;
+    }
+
+    .fd-form-status-message {
+        font-size: 0.92rem;
     }
 
     /* --- CONTACT INFO --- */
@@ -803,11 +887,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const contactStatus = document.getElementById("contactStatus");
     const submitButton = document.getElementById("contactSubmit");
 
-    const setContactStatus = (message, type) => {
+    const setContactStatus = (message, type, title = "") => {
         if (!contactStatus) return;
 
-        contactStatus.textContent = message;
-        contactStatus.className = `fd-form-status is-visible ${type === "success" ? "is-success" : "is-error"}`;
+        const normalizedType = ["success", "error", "progress"].includes(type) ? type : "error";
+        const icon = normalizedType === "success"
+            ? "bi-check2-circle"
+            : normalizedType === "progress"
+                ? "bi-hourglass-split"
+                : "bi-exclamation-triangle";
+        const fallbackTitle = normalizedType === "success"
+            ? "Erfolgreich abgesendet"
+            : normalizedType === "progress"
+                ? "Nachricht wird versendet"
+                : "Absenden nicht moeglich";
+
+        contactStatus.innerHTML = `
+            <div class="fd-form-status-card">
+                <div class="fd-form-status-icon" aria-hidden="true">
+                    <i class="bi ${icon}"></i>
+                </div>
+                <div class="fd-form-status-content">
+                    <p class="fd-form-status-title">${title || fallbackTitle}</p>
+                    <p class="fd-form-status-message">${message}</p>
+                </div>
+            </div>
+        `;
+        contactStatus.className = `fd-form-status is-visible is-${normalizedType}`;
     };
 
     if (contactForm && contactStatus && submitButton) {
@@ -829,7 +935,7 @@ document.addEventListener("DOMContentLoaded", () => {
             formData.append("h-captcha-response", captchaToken);
 
             submitButton.disabled = true;
-            setContactStatus("Nachricht wird gerade sicher versendet ...", "success");
+            setContactStatus("Bitte einen kurzen Moment warten. Deine Nachricht wird gerade sicher an uns uebermittelt.", "progress", "Nachricht wird versendet");
 
             try {
                 const response = await fetch("../api/contact.php", {
@@ -840,7 +946,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                const result = await response.json();
+                const responseText = await response.text();
+                let result = null;
+
+                try {
+                    result = responseText ? JSON.parse(responseText) : null;
+                } catch (parseError) {
+                    if (window.location.protocol === "file:" || window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") {
+                        throw new Error("Das Formular laeuft lokal aktuell nur im Frontend. Fuer den echten Versand brauchst du einen PHP-Server bzw. spaeter dein Hosting bei Hostinger.");
+                    }
+
+                    throw new Error("Der Server hat keine gueltige Antwort geliefert. Bitte pruefe, ob PHP und die Mail-Konfiguration am Hosting korrekt aktiv sind.");
+                }
 
                 if (!response.ok || !result.success) {
                     throw new Error(result.message || "Der Versand konnte leider nicht abgeschlossen werden.");
@@ -851,13 +968,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     window.hcaptcha.reset();
                 }
 
-                setContactStatus(result.message || "Danke! Deine Nachricht wurde versendet und die Bestätigung ist unterwegs.", "success");
+                setContactStatus(
+                    result.message || "Danke! Deine Nachricht wurde erfolgreich abgesendet. Die Bestaetigung ist bereits unterwegs.",
+                    "success",
+                    "Erfolgreich abgesendet"
+                );
+                contactStatus.scrollIntoView({ behavior: "smooth", block: "nearest" });
             } catch (error) {
                 if (window.hcaptcha) {
                     window.hcaptcha.reset();
                 }
 
-                setContactStatus(error.message || "Beim Absenden ist ein Fehler aufgetreten. Bitte versuche es erneut.", "error");
+                setContactStatus(
+                    error.message || "Beim Absenden ist ein Fehler aufgetreten. Bitte versuche es erneut.",
+                    "error",
+                    "Absenden fehlgeschlagen"
+                );
             } finally {
                 submitButton.disabled = false;
             }
